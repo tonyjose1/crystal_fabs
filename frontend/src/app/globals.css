@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-background: hsl(0 0% 98%);
+  --color-text: hsl(222.2 47.4% 11.2%);
+  --font-roboto: "Roboto", sans-serif;
+  --font-playfair-display: "Playfair Display", serif;
+}
+
+body {
+  @apply bg-background text-text;
+  font-family: var(--font-roboto);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair-display);
+}
+
+::selection {
+  background-color: #1E3A8A; /* primary color */
+  color: white;
+}
+
+/* Optional masonry styles */
+.my-masonry-grid {
+  display: flex;
+  margin-left: -30px;
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 30px;
+  background-clip: padding-box;
+}
+.my-masonry-grid_column > div {
+  margin-bottom: 30px;
+}
