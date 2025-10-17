@@ -11,3 +11,7 @@ __pycache__/
 # Build output
 build/
 dist/
+
+# Next.js build
+.next/
+out/
