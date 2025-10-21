@@ -5,8 +5,14 @@ import Link from 'next/link';
 import api from '../../../../utils/api';
 import axios from 'axios';
 
+interface Testimonial {
+  id: string;
+  author: string;
+  content: string;
+}
+
 export default function TestimonialsDashboardPage() {
-  const [testimonials, setTestimonials] = useState<any[]>([]);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(1);

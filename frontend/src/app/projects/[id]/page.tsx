@@ -5,11 +5,21 @@ import { useParams } from 'next/navigation';
 import api from '../../../utils/api';
 import Image from 'next/image';
 
+interface Project {
+  id: string;
+  name: string;
+  description: string;
+  imageUrl: string;
+  category: string;
+  client: string;
+  testimonial: string;
+}
+
 export default function ProjectDetailPage() {
   const { id } = useParams();
-  const [project, setProject] = useState(null);
+  const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (id) {

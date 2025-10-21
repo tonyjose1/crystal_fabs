@@ -6,6 +6,11 @@ import api from '../../../../../../utils/api';
 import Modal from '../../../../../../components/Modal';
 import axios from 'axios';
 
+interface Category {
+  id: string;
+  name: string;
+}
+
 export default function EditProductPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -14,7 +19,7 @@ export default function EditProductPage() {
   });
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [categories, setCategories] = useState<any[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newCategoryName, setNewCategoryName] = useState('');
   const router = useRouter();

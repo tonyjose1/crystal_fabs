@@ -5,8 +5,15 @@ import Link from 'next/link';
 import api from '../../../../utils/api';
 import axios from 'axios';
 
+interface Project {
+  id: string;
+  name: string;
+  category: string;
+  client: string;
+}
+
 export default function ProjectsDashboardPage() {
-  const [projects, setProjects] = useState<any[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(1);

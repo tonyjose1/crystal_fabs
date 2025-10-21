@@ -5,8 +5,19 @@ import Link from 'next/link';
 import api from '../../../../utils/api';
 import axios from 'axios';
 
+interface Product {
+  id: string;
+  name: string;
+  category: { name: string };
+}
+
+interface Category {
+  id: string;
+  name: string;
+}
+
 export default function ProductsDashboardPage() {
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(1);
@@ -17,7 +28,7 @@ export default function ProductsDashboardPage() {
   const [search, setSearch] = useState('');
   const [filterBy, setFilterBy] = useState('');
   const [filterValue, setFilterValue] = useState('');
-  const [categories, setCategories] = useState<any[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -91,15 +102,15 @@ export default function ProductsDashboardPage() {
           onChange={(e) => setSearch(e.target.value)}
           className="p-2 border rounded-md"
         />
-        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="p-2 border rounded-md">
+        <select value={sortBy} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSortBy(e.target.value)} className="p-2 border rounded-md">
           <option value="createdAt">Created At</option>
           <option value="name">Name</option>
         </select>
-        <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)} className="p-2 border rounded-md">
+        <select value={sortOrder} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSortOrder(e.target.value)} className="p-2 border rounded-md">
           <option value="desc">Descending</option>
           <option value="asc">Ascending</option>
         </select>
-        <select value={filterValue} onChange={(e) => { setFilterBy('categoryId'); setFilterValue(e.target.value); }} className="p-2 border rounded-md">
+        <select value={filterValue} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { setFilterBy('categoryId'); setFilterValue(e.target.value); }} className="p-2 border rounded-md">
           <option value="">All Categories</option>
           {categories.map((cat) => (
             <option key={cat.id} value={cat.id}>{cat.name}</option>
