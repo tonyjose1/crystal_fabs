@@ -4,8 +4,12 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
+interface AdminUser {
+  username: string;
+}
+
 export default function DashboardPage({ children }: { children: React.ReactNode }) {
-  const [admin, setAdmin] = useState(null);
+  const [admin, setAdmin] = useState<AdminUser | null>(null);
   const router = useRouter();
 
   useEffect(() => {
