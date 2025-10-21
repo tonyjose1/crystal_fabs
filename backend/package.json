@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "lint": "eslint .",
-    "prisma:init": "prisma init"
+    "prisma:init": "prisma init",
+    "prisma:deploy": "prisma migrate deploy"
   },
   "prisma": {
     "seed": "node --loader ts-node/esm prisma/seed.ts"
