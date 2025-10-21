@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import api from '../../../../../utils/api';
+import axios from 'axios';
 
 export default function NewProjectPage() {
   const [formData, setFormData] = useState({
@@ -12,19 +13,21 @@ export default function NewProjectPage() {
     client: '',
     testimonial: '',
   });
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState('');
   const router = useRouter();
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFile(e.target.files[0]);
+    }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const data = new FormData();
     data.append('name', formData.name);
@@ -45,7 +48,11 @@ export default function NewProjectPage() {
       });
       router.push('/admin/dashboard/projects');
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to create project');
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data?.message || 'Failed to create project');
+      } else {
+        setError('An unknown error occurred');
+      }
     }
   };
 
@@ -64,7 +71,7 @@ export default function NewProjectPage() {
                     </div>
                     <div>
                       <label htmlFor="description" className="text-sm font-medium">Description</label>
-                      <textarea id="description" name="description" value={formData.description} onChange={handleChange} rows="5" className="w-full p-3 mt-1 border rounded-md"></textarea>
+                      <textarea id="description" name="description" value={formData.description} onChange={handleChange} rows={5} className="w-full p-3 mt-1 border rounded-md"></textarea>
                     </div>
                     <div>
                       <label htmlFor="client" className="text-sm font-medium">Client</label>
@@ -72,7 +79,7 @@ export default function NewProjectPage() {
                     </div>
                     <div>
                       <label htmlFor="testimonial" className="text-sm font-medium">Testimonial</label>
-                      <textarea id="testimonial" name="testimonial" value={formData.testimonial} onChange={handleChange} rows="3" className="w-full p-3 mt-1 border rounded-md"></textarea>
+                      <textarea id="testimonial" name="testimonial" value={formData.testimonial} onChange={handleChange} rows={3} className="w-full p-3 mt-1 border rounded-md"></textarea>
                     </div>
                     <div>
                       <label htmlFor="image" className="text-sm font-medium">Image</label>

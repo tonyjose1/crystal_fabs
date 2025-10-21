@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import api from '../../../../../utils/api';
+import axios from 'axios';
 
 export default function NewTestimonialPage() {
   const [formData, setFormData] = useState({
@@ -13,11 +14,11 @@ export default function NewTestimonialPage() {
   const [error, setError] = useState('');
   const router = useRouter();
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await api.post('/admin/testimonials', formData, {
@@ -25,7 +26,11 @@ export default function NewTestimonialPage() {
       });
       router.push('/admin/dashboard/testimonials');
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to create testimonial');
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data?.message || 'Failed to create testimonial');
+      } else {
+        setError('An unknown error occurred');
+      }
     }
   };
 
@@ -40,7 +45,7 @@ export default function NewTestimonialPage() {
           </div>
           <div>
             <label htmlFor="content" className="text-sm font-medium">Content</label>
-            <textarea id="content" name="content" value={formData.content} onChange={handleChange} rows="5" required className="w-full p-3 mt-1 border rounded-md"></textarea>
+            <textarea id="content" name="content" value={formData.content} onChange={handleChange} rows={5} required className="w-full p-3 mt-1 border rounded-md"></textarea>
           </div>
           <div>
             <label htmlFor="rating" className="text-sm font-medium">Rating</label>
