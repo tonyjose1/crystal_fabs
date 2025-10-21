@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import api from '../../../utils/api';
+import Image from 'next/image';
 
 export default function ProjectDetailPage() {
   const { id } = useParams();
@@ -15,7 +16,7 @@ export default function ProjectDetailPage() {
       const fetchProject = async () => {
         try {
           const response = await api.get(`/projects/${id}`);
-          setProject(response.data);
+          setProject(response.data.data);
         } catch (err) {
           setError(err.message);
         } finally {
@@ -34,8 +35,8 @@ export default function ProjectDetailPage() {
     <main className="py-20">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div>
-            <img src={project.imageUrl || '/placeholder.jpg'} alt={project.name} className="w-full h-auto rounded-lg shadow-lg" />
+          <div className="relative h-96">
+            <Image src={project.imageUrl || '/placeholder.jpg'} alt={project.name} fill style={{ objectFit: 'cover' }} className="rounded-lg shadow-lg" />
           </div>
           <div>
             <h1 className="text-4xl font-bold font-serif mb-4">{project.name}</h1>

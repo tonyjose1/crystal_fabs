@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface ImageWithFallbackProps {
   src: string;
@@ -26,11 +27,14 @@ export default function ImageWithFallback({ src, fallbackSrc, alt, className }: 
   };
 
   return (
-    <img
+    <Image
       src={imgSrc}
       alt={alt}
       className={className}
       onError={handleImageError}
+      fill
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      style={{ objectFit: 'cover' }}
     />
   );
 }

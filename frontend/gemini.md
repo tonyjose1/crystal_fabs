@@ -1,4 +1,3 @@
-
 # Gemini AI Log - Crystal Fabs Frontend
 
 This document outlines the thought process, commands, and actions taken by the Gemini AI assistant during the development of the Crystal Fabs frontend.
@@ -45,6 +44,17 @@ This document outlines the thought process, commands, and actions taken by the G
   - Implemented error handling to gracefully manage API failures.
 - **Outcome:** Successfully launched a fully functional website with dynamic content and a seamless user experience.
 
+## Phase 3: Tooling and Bug Fixes
+
+- **Objective:** To improve code quality, set up a testing framework, and resolve existing bugs and UI issues.
+- **Key Activities:**
+  - **ESLint:** Utilized the existing ESLint setup to identify and fix several issues, including replacing `<img>` tags with the `next/image` `Image` component to improve performance and resolve linting warnings.
+  - **Jest and React Testing Library:** Set up Jest and React Testing Library to enable component testing. This included configuring Jest for a Next.js environment and resolving issues with `@testing-library/jest-dom`.
+  - **Component and Page Fixes:**
+    - **Hydration Errors:** Resolved hydration errors on the products and projects pages by correcting the usage of the `next/image` component, ensuring that parent elements have the correct `position` and that the `sizes` prop is used with `fill`.
+    - **Data Display:** Fixed a bug where products and projects were not being displayed due to incorrect image handling in the `ProductCard` and `GalleryCard` components.
+    - **Forms:** Corrected type errors in the `QuoteForm` and `Contact` page, and improved the UI of the file input to be more user-friendly.
+
 ## File Structure
 
 ```
@@ -77,3 +87,7 @@ This document outlines the thought process, commands, and actions taken by the G
 ├── tailwind.config.js
 └── tsconfig.json
 ```
+
+---
+
+**Note to self:** Always read this file carefully before making any changes to the frontend. Understand the existing structure, component library, and conventions to ensure consistency and avoid breaking changes. Do not overwrite this file; append new information as needed.

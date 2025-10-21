@@ -34,7 +34,7 @@ const IndustriesPage = () => {
       <div className="text-center mt-16">
         <h2 className="text-3xl font-bold mb-4">Ready to get started?</h2>
         <p className="text-lg mb-8">Contact us today for a free consultation and quote.</p>
-        <Link href="/contact" className="text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors">
+        <Link href="/contact" className="text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-900 transition-colors">
             Get a Quote
         </Link>
       </div>

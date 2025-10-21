@@ -3,21 +3,26 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import api from '../../../utils/api';
+import axios from 'axios';
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const { data } = await api.post('/admin/login', { username, password });
-      localStorage.setItem('adminToken', data.token);
+      localStorage.setItem('adminToken', data.data.token);
       router.push('/admin/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data?.message || 'Login failed');
+      } else {
+        setError('An unknown error occurred');
+      }
     }
   };
 
@@ -32,25 +37,25 @@ export default function LoginPage() {
               id="username"
               type="text"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
               required
               className="w-full p-3 mt-1 border rounded-md"
             />
           </div>
           <div>
-            <label htmlFor="password" class="text-sm font-medium">Password</label>
+            <label htmlFor="password" className="text-sm font-medium">Password</label>
             <input
               id="password"
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
               required
               className="w-full p-3 mt-1 border rounded-md"
             />
           </div>
           {error && <p className="text-red-500 text-sm">{error}</p>}
           <div>
-            <button type="submit" className="w-full p-3 text-white bg-primary rounded-md hover:bg-blue-700">
+            <button type="submit" className="w-full p-3 text-white bg-primary rounded-md hover:bg-blue-900">
               Login
             </button>
           </div>

@@ -10,9 +10,13 @@ export const protect = async (req, res, next) => {
     try {
       token = req.headers.authorization.split(' ')[1];
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.admin = await prisma.admin.findUnique({ where: { id: decoded.id } }).select({ id: true, username: true });
+      req.admin = await prisma.admin.findUnique({
+        where: { id: decoded.id },
+        select: { id: true, username: true },
+      });
       next();
     } catch (error) {
+      console.error('Authentication error:', error);
       res.status(401).json({ message: 'Not authorized, token failed' });
     }
   }

@@ -3,6 +3,7 @@ import { Roboto, Playfair_Display } from 'next/font/google';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
+import PageTransition from '../components/PageTransition';
 import Link from 'next/link';
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] });
@@ -22,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <ScrollToTop />
         <div className="md:hidden fixed bottom-5 left-5">
-          <Link href="/contact" className="bg-primary text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-blue-700 transition-all duration-300">
+          <Link href="/contact" className="bg-primary text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-blue-900 transition-all duration-300">
             Get a Quote
           </Link>
         </div>

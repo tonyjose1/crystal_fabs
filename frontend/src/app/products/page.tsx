@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import ProductCard from '../../components/ProductCard';
 import api from '../../utils/api';
 import Modal from '../../components/Modal';
+import Image from 'next/image';
 
 interface Product {
   id: string;
@@ -26,8 +27,8 @@ export default function ProductsPage() {
       try {
         const response = await api.get('/products');
         console.log('Products API response:', response.data);
-        setProducts(response.data.data || []);
-        setFilteredProducts(response.data.data || []);
+        setProducts(response.data.data.products || []);
+        setFilteredProducts(response.data.data.products || []);
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
@@ -87,7 +88,7 @@ export default function ProductsPage() {
       <Modal isOpen={!!selectedProduct} onClose={closeModal} title={selectedProduct?.name}>
         {selectedProduct && (
           <div>
-            <img src={selectedProduct.imageUrl} alt={selectedProduct.name} className="w-full h-64 object-cover mb-4" />
+            <Image src={selectedProduct.imageUrl || '/placeholder.jpg'} alt={selectedProduct.name} width={500} height={400} className="w-full h-64 object-cover mb-4" />
             <p>{selectedProduct.description}</p>
             <div className="mt-4">
               <h3 className="font-bold">Dimensions:</h3>

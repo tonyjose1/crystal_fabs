@@ -68,7 +68,7 @@ export default function NewProductPage() {
           </div>
           {error && <p className="text-red-500 text-sm">{error}</p>}
           <div>
-            <button type="submit" className="w-full p-3 text-white bg-primary rounded-md hover:bg-blue-700">
+            <button type="submit" className="w-full p-3 text-white bg-primary rounded-md hover:bg-blue-900">
               Create Product
             </button>
           </div>

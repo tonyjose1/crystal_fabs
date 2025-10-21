@@ -1,4 +1,5 @@
 import TeamCard from '../../components/TeamCard';
+import Image from 'next/image';
 
 export default function AboutPage() {
   const team = [
@@ -32,8 +33,8 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold font-serif text-center mb-12">Our Office</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {officeImages.map((image) => (
-              <div key={image.id} className="rounded-lg overflow-hidden shadow-lg">
-                <img src={image.src} alt={image.alt} className="w-full h-64 object-cover" />
+              <div key={image.id} className="relative h-64 rounded-lg overflow-hidden shadow-lg">
+                <Image src={image.src} alt={image.alt} fill style={{ objectFit: 'cover' }} />
               </div>
             ))}
           </div>

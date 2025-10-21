@@ -14,6 +14,9 @@ This project is a full-stack web application for Crystal Fabs, a company special
 *   **Nodemailer:** Module for sending emails
 *   **dotenv:** Module for loading environment variables from a `.env` file
 *   **CORS:** Middleware for enabling Cross-Origin Resource Sharing
+*   **ESLint:** For code linting
+*   **Jest:** For testing
+*   **Supertest:** For API endpoint testing
 
 ### Frontend
 
@@ -22,6 +25,8 @@ This project is a full-stack web application for Crystal Fabs, a company special
 *   **TypeScript:** Typed superset of JavaScript
 *   **Tailwind CSS:** Utility-first CSS framework
 *   **ESLint:** Pluggable and configurable linter tool for identifying and reporting on patterns in JavaScript
+*   **Jest:** For component testing
+*   **React Testing Library:** For testing React components
 *   **Swiper:** Modern touch slider for mobile websites
 *   **React Responsive Masonry:** A responsive masonry component for React
 
@@ -166,6 +171,22 @@ frontend/
     ```
 
     Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### Linting
+
+To run the linter on either the frontend or backend, navigate to the respective directory and run:
+
+```bash
+npm run lint
+```
+
+### Running Tests
+
+To run the tests for either the frontend or backend, navigate to the respective directory and run:
+
+```bash
+npm run test
+```
 
 ## API Endpoints
 

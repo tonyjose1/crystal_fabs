@@ -1,13 +1,42 @@
 import { PrismaClient } from '@prisma/client';
 import asyncHandler from '../utils/asyncHandler.js';
 import ApiResponse from '../utils/ApiResponse.js';
-import ApiError from '../utils/ApiError.js';
 
 const prisma = new PrismaClient();
 
 export const getTestimonials = asyncHandler(async (req, res) => {
-  const testimonials = await prisma.testimonial.findMany();
-  res.status(200).json(new ApiResponse(200, testimonials));
+  const { page = 1, limit = 10, sortBy = 'createdAt', sortOrder = 'desc', search, countOnly } = req.query;
+
+  const where = {};
+  if (search) {
+    where.OR = [
+      { author: { contains: search, mode: 'insensitive' } },
+      { content: { contains: search, mode: 'insensitive' } },
+    ];
+  }
+
+  if (countOnly) {
+    const totalTestimonials = await prisma.testimonial.count({ where });
+    return res.status(200).json(new ApiResponse(200, { totalTestimonials }));
+  }
+
+  const testimonials = await prisma.testimonial.findMany({
+    where,
+    skip: (Number(page) - 1) * Number(limit),
+    take: Number(limit),
+    orderBy: {
+      [sortBy]: sortOrder,
+    },
+  });
+
+  const totalTestimonials = await prisma.testimonial.count({ where });
+
+  res.status(200).json(new ApiResponse(200, {
+    testimonials,
+    totalPages: Math.ceil(totalTestimonials / Number(limit)),
+    currentPage: Number(page),
+    totalTestimonials,
+  }));
 });
 
 export const createTestimonial = asyncHandler(async (req, res) => {

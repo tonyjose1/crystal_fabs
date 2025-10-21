@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import api from '../utils/api';
+import axios from 'axios';
 
 export default function QuoteForm() {
   const [formData, setFormData] = useState({
@@ -10,18 +11,20 @@ export default function QuoteForm() {
     category: '',
     message: '',
   });
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState({ type: '', message: '' });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFile(e.target.files[0]);
+    }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData();
     data.append('name', formData.name);
@@ -42,7 +45,11 @@ export default function QuoteForm() {
       setFormData({ name: '', phone: '', category: '', message: '' });
       setFile(null);
     } catch (err) {
-      setStatus({ type: 'error', message: err.response?.data?.message || 'Failed to send quote request.' });
+      if (axios.isAxiosError(err)) {
+        setStatus({ type: 'error', message: err.response?.data?.message || 'Failed to send quote request.' });
+      } else {
+        setStatus({ type: 'error', message: 'An unknown error occurred.' });
+      }
     }
   };
 
@@ -62,14 +69,20 @@ export default function QuoteForm() {
         </select>
       </div>
       <div className="mt-6">
-        <textarea name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} rows="5" className="p-3 border rounded-md w-full"></textarea>
+        <textarea name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} rows={5} className="p-3 border rounded-md w-full"></textarea>
       </div>
       <div className="mt-6">
-        <label htmlFor="file" className="block text-sm font-medium text-gray-700">Attach a file (PDF/Image)</label>
-        <input type="file" name="file" id="file" onChange={handleFileChange} className="mt-1 block w-full" />
+        <label className="block text-sm font-medium text-gray-700">Attach a file (PDF/Image)</label>
+        <div className="mt-1 flex items-center">
+          <label htmlFor="file" className="cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-md">
+            Choose File
+          </label>
+          <input type="file" name="file" id="file" onChange={handleFileChange} className="hidden" />
+          <span className="ml-3">{file ? file.name : 'No file chosen'}</span>
+        </div>
       </div>
       <div className="mt-8 text-center">
-        <button type="submit" className="bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+        <button type="submit" className="bg-primary text-black px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-900 hover:text-white transition-all duration-300 transform hover:scale-105">
           Submit Request
         </button>
       </div>

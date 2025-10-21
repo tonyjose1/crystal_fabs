@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import GalleryCard from '../../components/GalleryCard';
 import api from '../../utils/api';
 import Modal from '../../components/Modal';
+import Image from 'next/image';
 
 interface Project {
   id: string;
@@ -24,16 +25,12 @@ export default function ProjectsPage() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-const response = await api.get('/projects');
+        const response = await api.get('/projects');
         console.log('Projects API response:', response.data);
-        setProjects(response.data.data || []);
-        setFilteredProjects(response.data.data || []);
+        setProjects(response.data.data.projects || []);
+        setFilteredProjects(response.data.data.projects || []);
       } catch (err) {
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError('An unknown error occurred');
-        }
+        setError(err instanceof Error ? err.message : 'An unknown error occurred');
       } finally {
         setLoading(false);
       }
@@ -87,7 +84,7 @@ const response = await api.get('/projects');
       <Modal isOpen={!!selectedProject} onClose={closeModal} title={selectedProject?.name}>
         {selectedProject && (
           <div>
-            <img src={selectedProject.imageUrl} alt={selectedProject.name} className="w-full h-64 object-cover mb-4" />
+            <Image src={selectedProject.imageUrl || '/placeholder.jpg'} alt={selectedProject.name} width={500} height={400} className="w-full h-64 object-cover mb-4" />
             <p>{selectedProject.description}</p>
             <div className="mt-4">
               <h3 className="font-bold">Project Details:</h3>

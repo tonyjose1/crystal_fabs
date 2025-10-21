@@ -50,13 +50,13 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const [productsResponse, projectsResponse, testimonialsResponse] = await Promise.all([
-          api.get('/products'),
-          api.get('/projects'),
-          api.get('/testimonials'),
+          api.get('/products?limit=6'),
+          api.get('/projects?limit=6'),
+          api.get('/testimonials?limit=3'),
         ]);
-        setProducts(productsResponse.data.data || []);
-        setProjects(projectsResponse.data.data || []);
-        setTestimonials(testimonialsResponse.data.data || []);
+        setProducts(productsResponse.data.data.products || []);
+        setProjects(projectsResponse.data.data.projects || []);
+        setTestimonials(testimonialsResponse.data.data.testimonials || []);
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);

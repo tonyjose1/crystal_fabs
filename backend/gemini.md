@@ -79,3 +79,15 @@ This directory contains utility functions that can be used throughout the applic
 -   `ApiResponse.js`: Custom class for API responses.
 -   `asyncHandler.js`: A wrapper for async route handlers to catch errors.
 -   `emailService.js`: Service for sending emails.
+
+## Phase 2: Tooling Setup
+
+- **Objective:** To establish a consistent and high-quality development environment by setting up linting and testing.
+- **Key Activities:**
+  - **ESLint:** Initialized and configured ESLint to enforce a standard code style and catch common errors. The configuration was updated to include Node.js and Jest global variables to prevent `no-undef` errors.
+  - **Jest and Supertest:** Set up Jest for test running and Supertest for API endpoint testing. This allows for the creation of integration tests that simulate HTTP requests and validate responses.
+  - **ES Module Configuration:** Resolved a `SyntaxError: Cannot use import statement outside a module` error by updating the `test` script in `package.json` to run Jest with the `--experimental-vm-modules` flag, enabling ES module support in tests.
+
+---
+
+**Note to self:** Always read this file carefully before making any changes to the backend. Understand the existing structure and conventions to ensure consistency and avoid breaking changes. Do not overwrite this file; append new information as needed.
