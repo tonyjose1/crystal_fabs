@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-export default function DashboardPage({ children }) {
+export default function DashboardPage({ children }: { children: React.ReactNode }) {
   const [admin, setAdmin] = useState(null);
   const router = useRouter();
 
