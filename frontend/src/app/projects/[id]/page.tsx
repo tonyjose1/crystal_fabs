@@ -12,6 +12,10 @@ interface Project {
   testimonial: string;
 }
 
+interface Props {
+  params: { id: string };
+}
+
 async function getProject(id: string): Promise<Project | undefined> {
   const filePath = path.join(process.cwd(), 'src', 'data', 'projects.json');
   const jsonData = await fs.readFile(filePath, 'utf8');
@@ -29,7 +33,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ProjectDetailPage({ params }: { params: { id: string } }) {
+export default async function ProjectDetailPage({ params }: Props) {
   const project = await getProject(params.id);
 
   if (!project) return <p>Project not found.</p>;

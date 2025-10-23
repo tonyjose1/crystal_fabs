@@ -10,6 +10,10 @@ interface Product {
   category: { name: string };
 }
 
+interface Props {
+  params: { id: string };
+}
+
 async function getProduct(id: string): Promise<Product | undefined> {
   const filePath = path.join(process.cwd(), 'src', 'data', 'products.json');
   const jsonData = await fs.readFile(filePath, 'utf8');
@@ -27,7 +31,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ProductDetailPage({ params }: { params: { id: string } }) {
+export default async function ProductDetailPage({ params }: Props) {
   const product = await getProduct(params.id);
 
   if (!product) return <p>Product not found.</p>;
