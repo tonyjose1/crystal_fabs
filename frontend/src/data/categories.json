@@ -1,0 +1,26 @@
+[
+  {
+    "id": "6302e95c-ff96-4298-a8c0-3f3e6b3b57c0",
+    "name": "Kitchen Equipment",
+    "createdAt": "2025-10-21T21:56:36.687Z",
+    "updatedAt": "2025-10-21T21:56:36.687Z"
+  },
+  {
+    "id": "7a46bb19-553a-4fad-9cc8-e8d208619c09",
+    "name": "Steel Works & Fabrication",
+    "createdAt": "2025-10-21T21:56:36.695Z",
+    "updatedAt": "2025-10-21T21:56:36.695Z"
+  },
+  {
+    "id": "6d70bd22-1a16-4703-a417-f1a555ce0e13",
+    "name": "Storage Solutions",
+    "createdAt": "2025-10-21T21:56:36.700Z",
+    "updatedAt": "2025-10-21T21:56:36.700Z"
+  },
+  {
+    "id": "644068cf-17a2-4ffa-800b-2337a7062177",
+    "name": "Architectural Metalwork",
+    "createdAt": "2025-10-21T21:56:36.764Z",
+    "updatedAt": "2025-10-21T21:56:36.764Z"
+  }
+]

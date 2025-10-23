@@ -1,0 +1,92 @@
+[
+  {
+    "id": "product-1",
+    "name": "Stainless Steel Kitchen Sink",
+    "description": "High-quality stainless steel sink, durable and easy to clean.",
+    "imageUrl": "https://crystal-labs-demo.s3.eu-north-1.amazonaws.com/images/products/item1.jpg",
+    "categoryId": "6302e95c-ff96-4298-a8c0-3f3e6b3b57c0",
+    "createdAt": "2025-10-21T21:56:36.767Z",
+    "updatedAt": "2025-10-21T21:56:36.767Z",
+    "category": {
+      "id": "6302e95c-ff96-4298-a8c0-3f3e6b3b57c0",
+      "name": "Kitchen Equipment",
+      "createdAt": "2025-10-21T21:56:36.687Z",
+      "updatedAt": "2025-10-21T21:56:36.687Z"
+    }
+  },
+  {
+    "id": "product-2",
+    "name": "Custom Steel Railing",
+    "description": "Bespoke steel railing for modern and classic interiors.",
+    "imageUrl": "https://crystal-labs-demo.s3.eu-north-1.amazonaws.com/images/products/item2.jpg",
+    "categoryId": "7a46bb19-553a-4fad-9cc8-e8d208619c09",
+    "createdAt": "2025-10-21T21:56:36.771Z",
+    "updatedAt": "2025-10-21T21:56:36.771Z",
+    "category": {
+      "id": "7a46bb19-553a-4fad-9cc8-e8d208619c09",
+      "name": "Steel Works & Fabrication",
+      "createdAt": "2025-10-21T21:56:36.695Z",
+      "updatedAt": "2025-10-21T21:56:36.695Z"
+    }
+  },
+  {
+    "id": "product-3",
+    "name": "Industrial Shelving Unit",
+    "description": "Heavy-duty steel shelving for industrial and commercial use.",
+    "imageUrl": "https://crystal-labs-demo.s3.eu-north-1.amazonaws.com/images/products/item3.jpg",
+    "categoryId": "6d70bd22-1a16-4703-a417-f1a555ce0e13",
+    "createdAt": "2025-10-21T21:56:36.774Z",
+    "updatedAt": "2025-10-21T21:56:36.774Z",
+    "category": {
+      "id": "6d70bd22-1a16-4703-a417-f1a555ce0e13",
+      "name": "Storage Solutions",
+      "createdAt": "2025-10-21T21:56:36.700Z",
+      "updatedAt": "2025-10-21T21:56:36.700Z"
+    }
+  },
+  {
+    "id": "product-4",
+    "name": "Decorative Metal Gate",
+    "description": "Ornate and secure metal gates for residential and commercial properties.",
+    "imageUrl": "https://crystal-labs-demo.s3.eu-north-1.amazonaws.com/images/products/item4.jpg",
+    "categoryId": "644068cf-17a2-4ffa-800b-2337a7062177",
+    "createdAt": "2025-10-21T21:56:36.776Z",
+    "updatedAt": "2025-10-21T21:56:36.776Z",
+    "category": {
+      "id": "644068cf-17a2-4ffa-800b-2337a7062177",
+      "name": "Architectural Metalwork",
+      "createdAt": "2025-10-21T21:56:36.764Z",
+      "updatedAt": "2025-10-21T21:56:36.764Z"
+    }
+  },
+  {
+    "id": "product-5",
+    "name": "Commercial Kitchen Hood",
+    "description": "High-performance kitchen hood for commercial kitchens.",
+    "imageUrl": "https://crystal-labs-demo.s3.eu-north-1.amazonaws.com/images/products/item5.jpg",
+    "categoryId": "6302e95c-ff96-4298-a8c0-3f3e6b3b57c0",
+    "createdAt": "2025-10-21T21:56:36.778Z",
+    "updatedAt": "2025-10-21T21:56:36.778Z",
+    "category": {
+      "id": "6302e95c-ff96-4298-a8c0-3f3e6b3b57c0",
+      "name": "Kitchen Equipment",
+      "createdAt": "2025-10-21T21:56:36.687Z",
+      "updatedAt": "2025-10-21T21:56:36.687Z"
+    }
+  },
+  {
+    "id": "product-6",
+    "name": "Custom Steel Beams",
+    "description": "Fabrication of custom steel beams for construction projects.",
+    "imageUrl": "https://crystal-labs-demo.s3.eu-north-1.amazonaws.com/images/products/item6.jpg",
+    "categoryId": "7a46bb19-553a-4fad-9cc8-e8d208619c09",
+    "createdAt": "2025-10-21T21:56:36.780Z",
+    "updatedAt": "2025-10-21T21:56:36.780Z",
+    "category": {
+      "id": "7a46bb19-553a-4fad-9cc8-e8d208619c09",
+      "name": "Steel Works & Fabrication",
+      "createdAt": "2025-10-21T21:56:36.695Z",
+      "updatedAt": "2025-10-21T21:56:36.695Z"
+    }
+  }
+]

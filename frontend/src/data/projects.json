@@ -1,0 +1,68 @@
+[
+  {
+    "id": "project-1",
+    "name": "Luxury Apartment Interior",
+    "description": "Fabrication and installation of custom steel fixtures for a luxury apartment.",
+    "imageUrl": "https://crystal-labs-demo.s3.eu-north-1.amazonaws.com/images/projects/project1.jpg",
+    "category": "Residential",
+    "client": "Private Client",
+    "testimonial": "Crystal Fabs exceeded our expectations with their attention to detail and craftsmanship.",
+    "createdAt": "2025-10-21T21:56:36.783Z",
+    "updatedAt": "2025-10-21T21:56:36.783Z"
+  },
+  {
+    "id": "project-2",
+    "name": "Restaurant Kitchen Setup",
+    "description": "Complete stainless steel kitchen setup for a new restaurant.",
+    "imageUrl": "https://crystal-labs-demo.s3.eu-north-1.amazonaws.com/images/projects/project2.jpg",
+    "category": "Commercial",
+    "client": "The Gourmet Kitchen",
+    "testimonial": "The team was professional, efficient, and delivered a top-quality kitchen.",
+    "createdAt": "2025-10-21T21:56:36.785Z",
+    "updatedAt": "2025-10-21T21:56:36.785Z"
+  },
+  {
+    "id": "project-3",
+    "name": "Commercial Building Facade",
+    "description": "Design and installation of a modern steel and glass facade.",
+    "imageUrl": "https://crystal-labs-demo.s3.eu-north-1.amazonaws.com/images/projects/project3.jpg",
+    "category": "Commercial",
+    "client": "ABC Corporation",
+    "testimonial": "A stunning transformation of our building. Highly recommended.",
+    "createdAt": "2025-10-21T21:56:36.787Z",
+    "updatedAt": "2025-10-21T21:56:36.787Z"
+  },
+  {
+    "id": "project-4",
+    "name": "Residential Staircase",
+    "description": "Custom-designed spiral staircase for a modern home.",
+    "imageUrl": "https://crystal-labs-demo.s3.eu-north-1.amazonaws.com/images/projects/project4.jpg",
+    "category": "Residential",
+    "client": "Private Client",
+    "testimonial": "The staircase is a work of art. We are thrilled with the result.",
+    "createdAt": "2025-10-21T21:56:36.791Z",
+    "updatedAt": "2025-10-21T21:56:36.791Z"
+  },
+  {
+    "id": "project-5",
+    "name": "Office Building Entrance",
+    "description": "Fabrication and installation of a grand steel and glass entrance.",
+    "imageUrl": "https://crystal-labs-demo.s3.eu-north-1.amazonaws.com/images/projects/project5.jpg",
+    "category": "Commercial",
+    "client": "Tech Corp",
+    "testimonial": "The new entrance has completely transformed our building.",
+    "createdAt": "2025-10-21T21:56:36.793Z",
+    "updatedAt": "2025-10-21T21:56:36.793Z"
+  },
+  {
+    "id": "project-6",
+    "name": "Modern Home Extension",
+    "description": "Steel frame extension for a modern home.",
+    "imageUrl": "https://crystal-labs-demo.s3.eu-north-1.amazonaws.com/images/projects/project6.jpg",
+    "category": "Residential",
+    "client": "Private Client",
+    "testimonial": "The extension is seamless and the quality is outstanding.",
+    "createdAt": "2025-10-21T21:56:36.795Z",
+    "updatedAt": "2025-10-21T21:56:36.795Z"
+  }
+]

@@ -1,8 +1,5 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
-import api from '../../../utils/api';
+import fs from 'fs/promises';
+import path from 'path';
 import Image from 'next/image';
 
 interface Project {
@@ -15,34 +12,26 @@ interface Project {
   testimonial: string;
 }
 
-export default function ProjectDetailPage() {
-  const { id } = useParams();
-  const [project, setProject] = useState<Project | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+async function getProject(id: string): Promise<Project | undefined> {
+  const filePath = path.join(process.cwd(), 'src', 'data', 'projects.json');
+  const jsonData = await fs.readFile(filePath, 'utf8');
+  const projects = JSON.parse(jsonData);
+  return projects.find((p: Project) => p.id === id);
+}
 
-  useEffect(() => {
-    if (id) {
-      const fetchProject = async () => {
-        try {
-          const response = await api.get(`/projects/${id}`);
-          setProject(response.data.data);
-        } catch (err) {
-          if (err instanceof Error) {
-            setError(err.message);
-          } else {
-            setError('An unknown error occurred');
-          }
-        } finally {
-          setLoading(false);
-        }
-      };
-      fetchProject();
-    }
-  }, [id]);
+export async function generateStaticParams() {
+  const filePath = path.join(process.cwd(), 'src', 'data', 'projects.json');
+  const jsonData = await fs.readFile(filePath, 'utf8');
+  const projects = JSON.parse(jsonData);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  return projects.map((project: Project) => ({
+    id: project.id,
+  }));
+}
+
+export default async function ProjectDetailPage({ params }: { params: { id: string } }) {
+  const project = await getProject(params.id);
+
   if (!project) return <p>Project not found.</p>;
 
   return (

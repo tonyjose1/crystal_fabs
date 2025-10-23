@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import api from '../utils/api';
-import axios from 'axios';
 
 export default function QuoteForm() {
   const [formData, setFormData] = useState({
@@ -11,50 +9,50 @@ export default function QuoteForm() {
     category: '',
     message: '',
   });
-  const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState({ type: '', message: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFile(e.target.files[0]);
-    }
-  };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData();
-    data.append('name', formData.name);
-    data.append('phone', formData.phone);
-    data.append('category', formData.category);
-    data.append('message', formData.message);
-    if (file) {
-      data.append('attachment', file);
-    }
+    const form = e.target as HTMLFormElement;
+    const data = new FormData(form);
 
     try {
-      await api.post('/quotes', data, {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
         headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+          'Accept': 'application/json'
+        }
       });
-      setStatus({ type: 'success', message: 'Quote request sent successfully!' });
-      setFormData({ name: '', phone: '', category: '', message: '' });
-      setFile(null);
-    } catch (err) {
-      if (axios.isAxiosError(err)) {
-        setStatus({ type: 'error', message: err.response?.data?.message || 'Failed to send quote request.' });
+
+      if (response.ok) {
+        setStatus({ type: 'success', message: 'Thanks for your submission!' });
+        setFormData({ name: '', phone: '', category: '', message: '' });
       } else {
-        setStatus({ type: 'error', message: 'An unknown error occurred.' });
+        const responseData = await response.json();
+        if (responseData.errors) {
+          const errorMessage = responseData.errors.map((error: any) => error.message).join(', ');
+          setStatus({ type: 'error', message: errorMessage });
+        } else {
+          setStatus({ type: 'error', message: 'Oops! There was a problem submitting your form' });
+        }
       }
+    } catch (error) {
+      setStatus({ type: 'error', message: 'Oops! There was a problem submitting your form' });
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg">
+    <form
+      onSubmit={handleSubmit}
+      action="https://formspree.io/f/mblznreo"
+      method="POST"
+      className="bg-white p-8 rounded-lg shadow-lg"
+    >
       <h2 className="text-3xl font-bold font-serif text-center mb-8">Get a Free Quote</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required className="p-3 border rounded-md" />
@@ -71,16 +69,7 @@ export default function QuoteForm() {
       <div className="mt-6">
         <textarea name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} rows={5} className="p-3 border rounded-md w-full"></textarea>
       </div>
-      <div className="mt-6">
-        <label className="block text-sm font-medium text-gray-700">Attach a file (PDF/Image)</label>
-        <div className="mt-1 flex items-center">
-          <label htmlFor="file" className="cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-md">
-            Choose File
-          </label>
-          <input type="file" name="file" id="file" onChange={handleFileChange} className="hidden" />
-          <span className="ml-3">{file ? file.name : 'No file chosen'}</span>
-        </div>
-      </div>
+
       <div className="mt-8 text-center">
         <button type="submit" className="bg-primary text-black px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-900 hover:text-white transition-all duration-300 transform hover:scale-105">
           Submit Request

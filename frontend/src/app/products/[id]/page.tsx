@@ -1,8 +1,5 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
-import api from '../../../utils/api';
+import fs from 'fs/promises';
+import path from 'path';
 import Image from 'next/image';
 
 interface Product {
@@ -13,34 +10,26 @@ interface Product {
   category: { name: string };
 }
 
-export default function ProductDetailPage() {
-  const { id } = useParams();
-  const [product, setProduct] = useState<Product | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+async function getProduct(id: string): Promise<Product | undefined> {
+  const filePath = path.join(process.cwd(), 'src', 'data', 'products.json');
+  const jsonData = await fs.readFile(filePath, 'utf8');
+  const products = JSON.parse(jsonData);
+  return products.find((p: Product) => p.id === id);
+}
 
-  useEffect(() => {
-    if (id) {
-      const fetchProduct = async () => {
-        try {
-          const response = await api.get(`/products/${id}`);
-          setProduct(response.data.data);
-        } catch (err) {
-          if (err instanceof Error) {
-            setError(err.message);
-          } else {
-            setError('An unknown error occurred');
-          }
-        } finally {
-          setLoading(false);
-        }
-      };
-      fetchProduct();
-    }
-  }, [id]);
+export async function generateStaticParams() {
+  const filePath = path.join(process.cwd(), 'src', 'data', 'products.json');
+  const jsonData = await fs.readFile(filePath, 'utf8');
+  const products = JSON.parse(jsonData);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  return products.map((product: Product) => ({
+    id: product.id,
+  }));
+}
+
+export default async function ProductDetailPage({ params }: { params: { id: string } }) {
+  const product = await getProduct(params.id);
+
   if (!product) return <p>Product not found.</p>;
 
   return (
@@ -57,7 +46,6 @@ export default function ProductDetailPage() {
             <div className="mt-8">
               <h3 className="text-2xl font-bold font-serif mb-4">Key Features</h3>
               <ul className="list-disc list-inside text-text">
-                {/* Add key features here if available in your data */}
                 <li>High-quality materials</li>
                 <li>Durable construction</li>
                 <li>Customizable design</li>

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "testimonial-1",
+    "author": "John Doe",
+    "content": "Crystal Fabs delivered exceptional quality and service. Highly recommended!",
+    "rating": 5,
+    "createdAt": "2025-10-21T21:56:36.797Z",
+    "updatedAt": "2025-10-21T21:56:36.797Z"
+  },
+  {
+    "id": "testimonial-2",
+    "author": "Jane Smith",
+    "content": "Professional and efficient. Our custom railing looks fantastic!",
+    "rating": 5,
+    "createdAt": "2025-10-21T21:56:36.800Z",
+    "updatedAt": "2025-10-21T21:56:36.800Z"
+  },
+  {
+    "id": "testimonial-3",
+    "author": "Michael Johnson",
+    "content": "The team was a pleasure to work with and the results speak for themselves.",
+    "rating": 5,
+    "createdAt": "2025-10-21T21:56:36.803Z",
+    "updatedAt": "2025-10-21T21:56:36.803Z"
+  },
+  {
+    "id": "testimonial-4",
+    "author": "Emily Williams",
+    "content": "I am so impressed with the craftsmanship and attention to detail.",
+    "rating": 5,
+    "createdAt": "2025-10-21T21:56:36.804Z",
+    "updatedAt": "2025-10-21T21:56:36.804Z"
+  }
+]
