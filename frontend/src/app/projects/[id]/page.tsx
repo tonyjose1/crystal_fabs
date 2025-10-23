@@ -12,8 +12,21 @@ interface Project {
   testimonial: string;
 }
 
+export async function generateStaticParams() {
+  const filePath = path.join(process.cwd(), 'src', 'data', 'projects.json');
+  const jsonData = await fs.readFile(filePath, 'utf8');
+  const projects = JSON.parse(jsonData);
+
+  return projects.map((project: Project) => ({
+    id: project.id,
+  }));
+}
+
 export default async function ProjectDetailPage({ params }: { params: { id: string } }) {
-  const project = await getProject(params.id);
+  const filePath = path.join(process.cwd(), 'src', 'data', 'projects.json');
+  const jsonData = await fs.readFile(filePath, 'utf8');
+  const projects = JSON.parse(jsonData);
+  const project = projects.find((p: Project) => p.id === params.id);
 
   if (!project) return <p>Project not found.</p>;
 
