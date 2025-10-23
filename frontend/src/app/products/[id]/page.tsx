@@ -10,6 +10,13 @@ interface Product {
   category: { name: string };
 }
 
+async function getProduct(id: string): Promise<Product | undefined> {
+  const filePath = path.join(process.cwd(), 'src', 'data', 'products.json');
+  const jsonData = await fs.readFile(filePath, 'utf8');
+  const products = JSON.parse(jsonData);
+  return products.find((p: Product) => p.id === id);
+}
+
 export async function generateStaticParams() {
   const filePath = path.join(process.cwd(), 'src', 'data', 'products.json');
   const jsonData = await fs.readFile(filePath, 'utf8');
@@ -20,11 +27,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ProductDetailPage({ params }: { params: { id: string } }) {
-  const filePath = path.join(process.cwd(), 'src', 'data', 'products.json');
-  const jsonData = await fs.readFile(filePath, 'utf8');
-  const products = JSON.parse(jsonData);
-  const product = products.find((p: Product) => p.id === params.id);
+export default async function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const product = await getProduct(id);
 
   if (!product) return <p>Product not found.</p>;
 
