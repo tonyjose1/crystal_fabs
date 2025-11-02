@@ -15,23 +15,23 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="py-20">
+    <main className="py-20 text-white">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold font-serif text-center mb-12">About Crystal Fabs</h1>
+        <h1 className="text-3xl md:text-4xl font-bold font-serif text-center mb-12">About Crystal Fabs</h1>
         <p className="text-lg text-center max-w-3xl mx-auto">Crystal Fabs is a leading provider of custom steel fabrication services. We are dedicated to delivering high-quality products and exceptional customer service. Our team of experienced professionals is committed to meeting the unique needs of each client.</p>
 
         <section id="our-team" className="py-20">
-          <h2 className="text-3xl font-bold font-serif text-center mb-12">Our Team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="text-2xl md:text-3xl font-bold font-serif text-center mb-12">Our Team</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             {team.map((member) => (
               <TeamCard key={member.name} member={member} />
             ))}
           </div>
         </section>
 
-        <section id="our-office" className="py-20 bg-background">
-          <h2 className="text-3xl font-bold font-serif text-center mb-12">Our Office</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <section id="our-office" className="py-20">
+          <h2 className="text-2xl md:text-3xl font-bold font-serif text-center mb-12">Our Office</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             {officeImages.map((image) => (
               <div key={image.id} className="relative h-64 rounded-lg overflow-hidden shadow-lg">
                 <Image src={image.src} alt={image.alt} fill style={{ objectFit: 'cover' }} />

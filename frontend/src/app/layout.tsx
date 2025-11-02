@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
 import PageTransition from '../components/PageTransition';
 import Link from 'next/link';
+import Cursor from '../components/Cursor';
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] });
 const playfairDisplay = Playfair_Display({ subsets: ['latin'], weight: ['700'] });
@@ -18,8 +19,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="font-sans">
+        <Cursor />
         <Header />
-        <main>{children}</main>
+        <main>
+          <PageTransition>{children}</PageTransition>
+        </main>
         <Footer />
         <ScrollToTop />
         <div className="md:hidden fixed bottom-5 left-5">

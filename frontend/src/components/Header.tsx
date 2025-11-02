@@ -1,18 +1,54 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 80) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    if (isHomePage) {
+      window.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (isHomePage) {
+        window.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, [isHomePage]);
+
+  const headerClasses = `text-white py-2 px-4 sticky top-0 z-50 transition-colors duration-300 ${
+    isHomePage && !isScrolled ? 'bg-transparent' : 'bg-primary'
+  }`;
 
   return (
-    <header className="bg-black text-white p-4 sticky top-0 z-50 shadow-md">
+    <header className={headerClasses}>
       <nav className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold font-serif">
-          Crystal Fabs
+        <Link href="/" onClick={handleLinkClick}>
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <Image src="/images/logo.png" alt="Crystal Fabs Logo" width={160} height={35} priority />
+          </motion.div>
         </Link>
-        <div className="hidden md:flex space-x-6">
+        <div className="hidden bg-transparent md:flex space-x-6">
           <Link href="/about" className="hover:text-accent">About</Link>
           <Link href="/products" className="hover:text-accent">Products</Link>
           <Link href="/services" className="hover:text-accent">Services</Link>
@@ -28,19 +64,26 @@ export default function Header() {
           </button>
         </div>
       </nav>
-      {isOpen && (
-        <div className="md:hidden mt-4">
-          <ul className="flex flex-col space-y-4">
-            <li><Link href="/about" className="hover:text-accent block text-center">About</Link></li>
-            <li><Link href="/products" className="hover:text-accent block text-center">Products</Link></li>
-            <li><Link href="/services" className="hover:text-accent block text-center">Services</Link></li>
-            <li><Link href="/industries" className="hover:text-accent block text-center">Industries</Link></li>
-            <li><Link href="/projects" className="hover:text-accent block text-center">Projects</Link></li>
-            <li><Link href="/contact" className
-="hover:text-accent block text-center">Contact</Link></li>
-          </ul>
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="md:hidden mt-4"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ul className="flex flex-col items-center space-y-4 py-4">
+              <li><Link href="/about" className="hover:text-accent block" onClick={handleLinkClick}>About</Link></li>
+              <li><Link href="/products" className="hover:text-accent block" onClick={handleLinkClick}>Products</Link></li>
+              <li><Link href="/services" className="hover:text-accent block" onClick={handleLinkClick}>Services</Link></li>
+              <li><Link href="/industries" className="hover:text-accent block" onClick={handleLinkClick}>Industries</Link></li>
+              <li><Link href="/projects" className="hover:text-accent block" onClick={handleLinkClick}>Projects</Link></li>
+              <li><Link href="/contact" className="hover:text-accent block" onClick={handleLinkClick}>Contact</Link></li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

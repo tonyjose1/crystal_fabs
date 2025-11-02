@@ -44,10 +44,10 @@ export default function ProductsList({ products }: { products: Product[] }) {
           placeholder="Search products..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="p-3 border rounded-md w-1/2"
+          className="p-3 border rounded-md w-full md:w-1/2 bg-gray-800 text-white border-gray-600 placeholder-gray-400"
         />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
         {filteredProducts.map((product) => (
           <div key={product.id} onClick={() => openModal(product)}>
             <ProductCard product={product} />

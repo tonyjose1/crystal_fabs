@@ -20,9 +20,9 @@ export default async function ProjectsPage() {
   const projects = await getProjects();
 
   return (
-    <main className="py-20">
+    <main className="py-20 text-white">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold font-serif text-center mb-12">Our Projects</h1>
+        <h1 className="text-3xl md:text-4xl font-bold font-serif text-center mb-12">Our Projects</h1>
         <ProjectsList projects={projects} />
       </div>
     </main>

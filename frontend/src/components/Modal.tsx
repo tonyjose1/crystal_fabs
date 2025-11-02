@@ -38,12 +38,12 @@ export default function Modal({ isOpen, onClose, children, title }: ModalProps) 
       onClick={onClose}
     >
       <div
-        className={`bg-white rounded-lg shadow-lg max-w-2xl w-full relative transform transition-transform duration-300 ${isOpen ? 'scale-100' : 'scale-95'}`}
+        className={`bg-gray-900 text-white rounded-lg shadow-lg max-w-2xl w-full relative transform transition-transform duration-300 ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex justify-between items-center p-4 border-b">
+        <div className="flex justify-between items-center p-4 border-b border-gray-700">
           <h3 className="text-xl font-semibold">{title}</h3>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-800">
+          <button onClick={onClose} className="text-gray-400 hover:text-white">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>

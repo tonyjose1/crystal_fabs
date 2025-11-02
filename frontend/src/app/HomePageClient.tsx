@@ -7,9 +7,12 @@ import GalleryCard from '../components/GalleryCard';
 import TestimonialCard from '../components/TestimonialCard';
 import InfoCard from '../components/InfoCard';
 import FeatureList from '../components/FeatureList';
+import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { FaHammer, FaAward, FaLightbulb, FaRulerCombined, FaPeopleCarry, FaCheck } from 'react-icons/fa';
+import { FaHammer, FaAward, FaLightbulb, FaRulerCombined, FaPeopleCarry, FaCheck, FaQuoteLeft, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import SwiperCore from 'swiper';
+import { useState } from 'react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -55,14 +58,47 @@ export default function HomePageClient({ products, projects, testimonials }: { p
     },
   ];
 
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
+
+  const [swiper, setSwiper] = useState<SwiperCore | null>(null);
+  const [isEnd, setIsEnd] = useState(false);
+  const [isBeginning, setIsBeginning] = useState(true);
+
+  const handleNext = () => {
+    if (swiper) {
+      swiper.slideNext();
+    }
+  };
+
+  const handlePrev = () => {
+    if (swiper) {
+      swiper.slidePrev();
+    }
+  };
+
+  const handleSlideChange = (swiperInstance: SwiperCore) => {
+    setIsEnd(swiperInstance.isEnd);
+    setIsBeginning(swiperInstance.isBeginning);
+  };
+
   return (
-    <main className="bg-black text-white">
+    <main>
       <Hero />
 
       {/* Why Choose Us Section */}
-      <section id="why-choose-us" className="py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold font-serif text-center mb-12">Why Choose Us?</h2>
+      <motion.section
+        id="why-choose-us"
+        className="py-20 bg-black relative overflow-hidden"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionVariants}
+      >
+        <div className="container mx-auto px-4 relative z-10">
+          <h2 className="text-3xl md:text-4xl font-bold font-serif text-center text-white mb-12">Why Choose Us?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <InfoCard icon={<FaHammer />} title="Years of Experience" value="15+" />
             <InfoCard icon={<FaAward />} title="Projects Completed" value="500+" />
@@ -72,25 +108,39 @@ export default function HomePageClient({ products, projects, testimonials }: { p
             <FeatureList features={features} />
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Featured Products Section */}
-      <section id="products" className="py-20">
+      <motion.section
+        id="products"
+        className="py-20 bg-black"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionVariants}
+      >
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold font-serif text-center mb-12">Featured Products</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="text-2xl md:text-4xl font-bold font-serif text-center text-white mb-12">Featured Products</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 text-white gap-8">
             {products?.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Project Gallery Section */}
-      <section id="projects" className="py-20">
+      <motion.section
+        id="projects"
+        className="py-20 bg-black"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionVariants}
+      >
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold font-serif text-center mb-12">Our Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="text-2xl md:text-4xl font-bold font-serif text-center text-white mb-12">Our Projects</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 text-white gap-8">
               {projects?.map((project) => (
                 <div key={project.id}>
                   <GalleryCard project={project} />
@@ -98,43 +148,87 @@ export default function HomePageClient({ products, projects, testimonials }: { p
               ))}
             </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Call to Action Section */}
-      <section className="text-center py-20">
+      <motion.section
+        className="text-center py-20 bg-black"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionVariants}
+      >
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold mb-4">Ready to start your next project?</h2>
-          <p className="text-lg mb-8">Contact us today for a free consultation and quote.</p>
-          <Link href="/contact" className="text-white font-bold py-3 px-8 rounded-full hover:bg-accent transition-colors">
-            Get a Quote
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">Ready to start your next project?</h2>
+          <p className="text-lg text-white mb-8">Contact us today for a free consultation and quote.</p>
+          <Link href="/contact">
+            <button className="bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primarydark transition-all duration-300 transform hover:scale-105 cursor-pointer">
+              Get a Quote
+            </button>
           </Link>
         </div>
-      </section>
+      </motion.section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20">
+      <motion.section
+        id="testimonials"
+        className="bg-black py-40"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionVariants}
+      >
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold font-serif text-center mb-12">What Our Clients Say</h2>
-          <Swiper
-            modules={[Navigation, Pagination]}
-            spaceBetween={50}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-            breakpoints={{
-              768: {
-                slidesPerView: 2,
-              },
-            }}
-          >
-            {testimonials?.map((testimonial) => (
-              <SwiperSlide key={testimonial.id}>
-                <TestimonialCard testimonial={testimonial} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            {/* Left Column */}
+            <div className="relative flex flex-col justify-center -mt-50 ml-40">
+              <div className="absolute -top-16 -left-16 w-40 h-40 border-2 border-[#3d579f] rounded-full opacity-50"></div>
+              <div className="absolute -top-8 -left-8 w-32 h-32 bg-[#3d579f] rounded-full flex items-center justify-center">
+                <FaQuoteLeft className="text-white text-5xl" />
+              </div>
+              <h2 className="text-6xl md:text-7xl font-bold font-serif text-white relative z-10 mt-24 ml-16">
+                <span className="block">What Our</span>
+                <span className="block">Clients Say</span>
+              </h2>
+            </div>
+
+            {/* Right Column */}
+            <div className="relative mr-10">
+              <Swiper
+                modules={[Navigation]}
+                spaceBetween={50}
+                slidesPerView={1}
+                onSwiper={setSwiper}
+                onSlideChange={handleSlideChange}
+              >
+                {testimonials?.map((testimonial) => (
+                  <SwiperSlide key={testimonial.id}>
+                    <TestimonialCard testimonial={testimonial} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <div className="flex justify-end items-center mt-8 space-x-4">
+                {!isBeginning && (
+                  <button
+                    onClick={handlePrev}
+                    className="w-16 h-16 rounded-full border-2 border-[#3d579f] text-[#3d579f] flex items-center justify-center hover:bg-[#3d579f] hover:text-white transition-colors"
+                  >
+                    <FaArrowLeft />
+                  </button>
+                )}
+                {!isEnd && (
+                  <button
+                    onClick={handleNext}
+                    className="w-16 h-16 rounded-full border-2 border-[#3d579f] text-[#3d579f] flex items-center justify-center hover:bg-[#3d579f] hover:text-white transition-colors"
+                  >
+                    <FaArrowRight />
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
+      </motion.section>
     </main>
   );
 }

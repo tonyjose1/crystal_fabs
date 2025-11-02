@@ -5,6 +5,7 @@ module.exports = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+
   theme: {
     extend: {
       colors: {
@@ -12,12 +13,16 @@ module.exports = {
         primarydark: '#171354',
         primarydarker: '#000000',
         secondary: '#2F394D',
-        accent: '#E4E4E4',
+        accent: '#4A5EE5',
         greylight: '#E4E4E4',
         greydark: '#2F394D',
         background: '#FFFFFF',
         white: '#FFFFFF',
         black: '#000000',
+      },
+      boxShadow: {
+        primaryGlow: '0 0 40px rgba(30, 45, 181, 0.8)',
+        primaryGlowHover: '0 0 70px rgba(30, 45, 181, 1)',
       },
       fontFamily: {
         sans: ['__Roboto_24c156', 'sans-serif'],
@@ -32,10 +37,16 @@ module.exports = {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        pulseGlow: {
+          '0%, 100%': { boxShadow: '0 0 40px rgba(30,45,181,0.7)' },
+          '50%': { boxShadow: '0 0 70px rgba(30,45,181,1)' },
+        },
       },
       animation: {
         'fade-in-down': 'fade-in-down 0.5s ease-out',
         'fade-in-up': 'fade-in-up 0.5s ease-out',
+        pulseGlow: 'pulseGlow 2.5s ease-in-out infinite',
+
       },
     },
   },
