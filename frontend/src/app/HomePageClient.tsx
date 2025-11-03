@@ -162,7 +162,7 @@ export default function HomePageClient({ products, projects, testimonials }: { p
           <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">Ready to start your next project?</h2>
           <p className="text-lg text-white mb-8">Contact us today for a free consultation and quote.</p>
           <Link href="/contact">
-            <button className="bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primarydark transition-all duration-300 transform hover:scale-105 cursor-pointer">
+            <button className="bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#3d579f] transition-all duration-300 transform hover:scale-105 cursor-pointer">
               Get a Quote
             </button>
           </Link>

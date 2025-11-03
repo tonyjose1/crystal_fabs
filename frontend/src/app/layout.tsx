@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <ScrollToTop />
         <div className="md:hidden fixed bottom-5 left-5">
-          <Link href="/contact" className="bg-primary text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-blue-900 transition-all duration-300">
+          <Link href="/contact" className="bg-primary text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-[#3d579f] transition-all duration-300">
             Get a Quote
           </Link>
         </div>

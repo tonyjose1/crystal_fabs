@@ -54,7 +54,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                 </ul>
               </div>
               <div className="mt-4 md:mt-8">
-                <button className="bg-primary text-white px-6 py-3 rounded-full text-base font-semibold hover:bg-blue-900 transition-all duration-300">
+                <button className="bg-primary text-white px-6 py-3 rounded-full text-base font-semibold hover:bg-[#3d579f] transition-all duration-300">
                   Request a Quote for this Product
                 </button>
               </div>

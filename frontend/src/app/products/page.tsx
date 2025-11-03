@@ -2,12 +2,22 @@ import fs from 'fs/promises';
 import path from 'path';
 import ProductsList from './ProductsList';
 
+interface Category {
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 interface Product {
   id: string;
   name: string;
-  category: { name: string };
-  imageUrl?: string;
-  description?: string;
+  description: string;
+  imageUrl: string;
+  categoryId: string;
+  createdAt: string;
+  updatedAt: string;
+  category: Category;
 }
 
 async function getProducts(): Promise<Product[]> {

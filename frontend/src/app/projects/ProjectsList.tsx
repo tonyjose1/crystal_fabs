@@ -8,9 +8,13 @@ import Image from 'next/image';
 interface Project {
   id: string;
   name: string;
-  imageUrl?: string;
-  client?: string;
-  description?: string;
+  description: string;
+  imageUrl: string;
+  category: string;
+  client: string;
+  testimonial: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export default function ProjectsList({ projects }: { projects: Project[] }) {
@@ -44,7 +48,7 @@ export default function ProjectsList({ projects }: { projects: Project[] }) {
           placeholder="Search projects..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="p-3 border rounded-md w-full md:w-1/2 bg-gray-800 text-white border-gray-600 placeholder-gray-400"
+          className="p-3 rounded-md w-full md:w-1/2 bg-black text-white border border-[#3d579f] onclick:border-[#3d579f] placeholder-white focus:border-[#3d579f] focus:outline-none focus:ring-0"
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">

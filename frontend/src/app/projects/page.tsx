@@ -5,9 +5,13 @@ import ProjectsList from './ProjectsList';
 interface Project {
   id: string;
   name: string;
-  imageUrl?: string;
-  client?: string;
-  description?: string;
+  description: string;
+  imageUrl: string;
+  category: string;
+  client: string;
+  testimonial: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 async function getProjects(): Promise<Project[]> {

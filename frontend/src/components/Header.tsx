@@ -42,28 +42,30 @@ export default function Header() {
 
   return (
     <header className={headerClasses}>
-      <nav className="container mx-auto flex justify-between items-center">
-        <Link href="/" onClick={handleLinkClick}>
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <Image src="/images/logo.png" alt="Crystal Fabs Logo" width={160} height={35} priority />
-          </motion.div>
-        </Link>
-        <div className="hidden bg-transparent md:flex space-x-6">
-          <Link href="/about" className="hover:text-accent">About</Link>
-          <Link href="/products" className="hover:text-accent">Products</Link>
-          <Link href="/services" className="hover:text-accent">Services</Link>
-          <Link href="/industries" className="hover:text-accent">Industries</Link>
-          <Link href="/projects" className="hover:text-accent">Projects</Link>
-          <Link href="/contact" className="hover:text-accent">Contact</Link>
-        </div>
-        <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)}>
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'}></path>
-            </svg>
-          </button>
-        </div>
-      </nav>
+      <div className="container mx-auto">
+        <nav className="flex justify-between items-center">
+          <Link href="/" onClick={handleLinkClick}>
+            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+              <Image src="/images/logo.png" alt="Crystal Fabs Logo" width={160} height={35} priority />
+            </motion.div>
+          </Link>
+          <div className="hidden bg-transparent md:flex space-x-6">
+            <Link href="/about" className="hover:text-accent">About</Link>
+            <Link href="/products" className="hover:text-accent">Products</Link>
+            <Link href="/services" className="hover:text-accent">Services</Link>
+            <Link href="/industries" className="hover:text-accent">Industries</Link>
+            <Link href="/projects" className="hover:text-accent">Projects</Link>
+            <Link href="/contact" className="hover:text-accent">Contact</Link>
+          </div>
+          <div className="md:hidden">
+            <button onClick={() => setIsOpen(!isOpen)}>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'}></path>
+              </svg>
+            </button>
+          </div>
+        </nav>
+      </div>
       <AnimatePresence>
         {isOpen && (
           <motion.div

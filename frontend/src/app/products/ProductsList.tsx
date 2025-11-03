@@ -5,12 +5,22 @@ import ProductCard from '../../components/ProductCard';
 import Modal from '../../components/Modal';
 import Image from 'next/image';
 
+interface Category {
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 interface Product {
   id: string;
   name: string;
-  category: { name: string };
-  imageUrl?: string;
-  description?: string;
+  description: string;
+  imageUrl: string;
+  categoryId: string;
+  createdAt: string;
+  updatedAt: string;
+  category: Category;
 }
 
 export default function ProductsList({ products }: { products: Product[] }) {
@@ -44,7 +54,7 @@ export default function ProductsList({ products }: { products: Product[] }) {
           placeholder="Search products..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="p-3 border rounded-md w-full md:w-1/2 bg-gray-800 text-white border-gray-600 placeholder-gray-400"
+          className="p-3 rounded-md w-full md:w-1/2 bg-black text-white border border-[#3d579f] placeholder-white focus:border-[#3d579f] focus:outline-none focus:ring-0"
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">

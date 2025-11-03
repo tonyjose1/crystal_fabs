@@ -38,7 +38,7 @@ export default function Modal({ isOpen, onClose, children, title }: ModalProps) 
       onClick={onClose}
     >
       <div
-        className={`bg-gray-900 text-white rounded-lg shadow-lg max-w-2xl w-full relative transform transition-transform duration-300 ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`bg-black border border-[#3d579f] text-white rounded-lg shadow-lg max-w-2xl w-full relative transform transition-transform duration-300 ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-center p-4 border-b border-gray-700">
