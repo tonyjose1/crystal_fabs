@@ -35,32 +35,32 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
   if (!project) return <p>Project not found.</p>;
 
-  return (
-    <div className="bg-white text-black">
-      <main className="py-10 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            <div className="relative h-64 md:h-96">
-              <Image src={project.imageUrl || '/placeholder.jpg'} alt={project.name} fill style={{ objectFit: 'cover' }} className="rounded-lg shadow-lg" />
-            </div>
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold font-serif mb-2 md:mb-4">{project.name}</h1>
-              <p className="text-secondary text-base md:text-lg mb-4">{project.category}</p>
-              <p className="text-text text-sm md:text-base">{project.description}</p>
-              <div className="mt-4 md:mt-8">
-                <h3 className="text-xl md:text-2xl font-bold font-serif mb-2 md:mb-4">Client</h3>
-                <p className="text-text">{project.client || 'N/A'}</p>
+    return (
+      <div className="bg-background text-text-primary">
+        <main className="py-10 md:py-20">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              <div className="relative h-64 md:h-96">
+                <Image src={project.imageUrl || '/placeholder.jpg'} alt={project.name} fill style={{ objectFit: 'cover' }} className="rounded-lg shadow-lg" />
               </div>
-              <div className="mt-4 md:mt-8">
-                <h3 className="text-xl md:text-2xl font-bold font-serif mb-2 md:mb-4">Testimonial</h3>
-                <blockquote className="text-text text-sm md:text-base italic border-l-4 border-primary pl-4">
-                  {project.testimonial || 'No testimonial available for this project.'}
-                </blockquote>
+              <div>
+                <h1 className="text-3xl md:text-4xl font-bold font-serif mb-2 md:mb-4">{project.name}</h1>
+                <p className="text-secondary text-base md:text-lg mb-4">{project.category}</p>
+                <p className="text-text-primary text-sm md:text-base">{project.description}</p>
+                <div className="mt-4 md:mt-8">
+                  <h3 className="text-xl md:text-2xl font-bold font-serif mb-2 md:mb-4">Client</h3>
+                  <p className="text-text-primary">{project.client || 'N/A'}</p>
+                </div>
+                <div className="mt-4 md:mt-8">
+                  <h3 className="text-xl md:text-2xl font-bold font-serif mb-2 md:mb-4">Testimonial</h3>
+                  <blockquote className="text-text-primary text-sm md:text-base italic border-l-4 border-primary pl-4">
+                    {project.testimonial || 'No testimonial available for this project.'}
+                  </blockquote>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </main>
-    </div>
-  );
-}
+        </main>
+      </div>
+    );
+  }

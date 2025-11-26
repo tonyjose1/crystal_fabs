@@ -34,16 +34,16 @@ export default function Modal({ isOpen, onClose, children, title }: ModalProps) 
 
   return (
     <div
-      className={`fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
+      className={`fixed inset-0 bg-background-secondary bg-opacity-50 z-50 flex justify-center items-center transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
       onClick={onClose}
     >
       <div
-        className={`bg-black border border-[#3d579f] text-white rounded-lg shadow-lg max-w-2xl w-full relative transform transition-transform duration-300 ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`bg-[var(--color-background)] border border-[var(--color-border)] text-[var(--color-text-primary)] rounded-lg shadow-lg max-w-2xl w-full relative transform transition-transform duration-300 ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex justify-between items-center p-4 border-b border-gray-700">
-          <h3 className="text-xl font-semibold">{title}</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-white">
+        <div className="flex justify-between items-center p-4 border-b border-[var(--color-border)]">
+          <h3 className="text-xl font-semibold text-[var(--color-text-primary)]">{title}</h3>
+          <button onClick={onClose} className="text-gray-400 hover:text-text-primary">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>

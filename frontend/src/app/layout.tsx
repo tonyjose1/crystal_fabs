@@ -15,22 +15,22 @@ export const metadata = {
   description: 'Your trusted partner for custom steel fabrication.',
 };
 
+import { ThemeProvider } from '../components/ThemeProvider';
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="font-sans">
-        <Cursor />
-        <Header />
-        <main>
-          <PageTransition>{children}</PageTransition>
-        </main>
-        <Footer />
-        <ScrollToTop />
-        <div className="md:hidden fixed bottom-5 left-5">
-          <Link href="/contact" className="bg-primary text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-[#3d579f] transition-all duration-300">
-            Get a Quote
-          </Link>
-        </div>
+    <html lang="en" suppressHydrationWarning>
+      <body className="font-sans bg-background text-text-primary">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Cursor />
+          <Header />
+          <main>
+            <PageTransition>{children}</PageTransition>
+          </main>
+          <Footer />
+          <ScrollToTop />
+
+        </ThemeProvider>
       </body>
     </html>
   );

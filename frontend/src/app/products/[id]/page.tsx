@@ -34,7 +34,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   if (!product) return <p>Product not found.</p>;
 
   return (
-    <div className="bg-white text-black">
+    <div className="bg-background text-text-primary">
       <main className="py-10 md:py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
@@ -44,10 +44,10 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             <div>
               <h1 className="text-3xl md:text-4xl font-bold font-serif mb-2 md:mb-4">{product.name}</h1>
               <p className="text-secondary text-base md:text-lg mb-4">{product.category.name}</p>
-              <p className="text-text text-sm md:text-base">{product.description}</p>
+              <p className="text-text-primary text-sm md:text-base">{product.description}</p>
               <div className="mt-4 md:mt-8">
                 <h3 className="text-xl md:text-2xl font-bold font-serif mb-2 md:mb-4">Key Features</h3>
-                <ul className="list-disc list-inside text-text">
+                <ul className="list-disc list-inside text-text-primary">
                   <li>High-quality materials</li>
                   <li>Durable construction</li>
                   <li>Customizable design</li>

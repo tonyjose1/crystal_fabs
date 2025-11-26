@@ -15,7 +15,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="py-20 text-white">
+    <main className="py-20 text-text-primary">
       <div className="container mx-auto px-4">
         <h1 className="text-3xl md:text-4xl font-bold font-serif text-center mb-12">About Crystal Fabs</h1>
         <p className="text-lg text-center max-w-3xl mx-auto">Crystal Fabs is a leading provider of custom steel fabrication services. We are dedicated to delivering high-quality products and exceptional customer service. Our team of experienced professionals is committed to meeting the unique needs of each client.</p>

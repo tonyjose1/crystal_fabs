@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ThemeToggleButton } from './ThemeToggleButton';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,26 +37,30 @@ export default function Header() {
     };
   }, [isHomePage]);
 
-  const headerClasses = `text-white py-2 px-4 sticky top-0 z-50 transition-colors duration-300 ${
-    isHomePage && !isScrolled ? 'bg-transparent' : 'bg-primary'
+  const headerClasses = `sticky top-0 z-50 transition-colors duration-300 rounded-xl ${
+    isHomePage && !isScrolled
+      ? 'bg-transparent text-text-primary'
+      : 'backdrop-blur-sm text-text-primary'
   }`;
 
   return (
     <header className={headerClasses}>
-      <div className="container mx-auto">
+      <div>
         <nav className="flex justify-between items-center">
           <Link href="/" onClick={handleLinkClick}>
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <Image src="/images/logo.png" alt="Crystal Fabs Logo" width={160} height={35} priority />
             </motion.div>
           </Link>
-          <div className="hidden bg-transparent md:flex space-x-6">
+          <div className="hidden bg-transparent md:flex items-center space-x-6">
+            
             <Link href="/about" className="hover:text-accent">About</Link>
             <Link href="/products" className="hover:text-accent">Products</Link>
             <Link href="/services" className="hover:text-accent">Services</Link>
             <Link href="/industries" className="hover:text-accent">Industries</Link>
             <Link href="/projects" className="hover:text-accent">Projects</Link>
             <Link href="/contact" className="hover:text-accent">Contact</Link>
+            <ThemeToggleButton />
           </div>
           <div className="md:hidden">
             <button onClick={() => setIsOpen(!isOpen)}>
@@ -82,6 +87,11 @@ export default function Header() {
               <li><Link href="/industries" className="hover:text-accent block" onClick={handleLinkClick}>Industries</Link></li>
               <li><Link href="/projects" className="hover:text-accent block" onClick={handleLinkClick}>Projects</Link></li>
               <li><Link href="/contact" className="hover:text-accent block" onClick={handleLinkClick}>Contact</Link></li>
+              <li className="mt-4">
+                <Link href="/contact" className="bg-primary text-text-primary px-6 py-3 rounded-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-accent" onClick={handleLinkClick}>
+                  Get a Free Quote
+                </Link>
+              </li>
             </ul>
           </motion.div>
         )}

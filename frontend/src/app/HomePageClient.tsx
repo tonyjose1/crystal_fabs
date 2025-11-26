@@ -91,14 +91,14 @@ export default function HomePageClient({ products, projects, testimonials }: { p
       {/* Why Choose Us Section */}
       <motion.section
         id="why-choose-us"
-        className="py-20 bg-black relative overflow-hidden"
+        className="py-20 bg-background relative overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={sectionVariants}
       >
         <div className="container mx-auto px-4 relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold font-serif text-center text-white mb-12">Why Choose Us?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold font-serif text-center text-text-primary mb-12">Why Choose Us?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <InfoCard icon={<FaHammer />} title="Years of Experience" value="15+" />
             <InfoCard icon={<FaAward />} title="Projects Completed" value="500+" />
@@ -113,15 +113,15 @@ export default function HomePageClient({ products, projects, testimonials }: { p
       {/* Featured Products Section */}
       <motion.section
         id="products"
-        className="py-20 bg-black"
+        className="py-20 bg-background-secondary"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={sectionVariants}
       >
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-4xl font-bold font-serif text-center text-white mb-12">Featured Products</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 text-white gap-8">
+          <h2 className="text-2xl md:text-4xl font-bold font-serif text-center text-text-primary mb-12">Featured Products</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {products?.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -132,15 +132,15 @@ export default function HomePageClient({ products, projects, testimonials }: { p
       {/* Project Gallery Section */}
       <motion.section
         id="projects"
-        className="py-20 bg-black"
+        className="py-20 bg-background"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={sectionVariants}
       >
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-4xl font-bold font-serif text-center text-white mb-12">Our Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 text-white gap-8">
+          <h2 className="text-2xl md:text-4xl font-bold font-serif text-center text-text-primary mb-12">Our Projects</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {projects?.map((project) => (
                 <div key={project.id}>
                   <GalleryCard project={project} />
@@ -152,17 +152,17 @@ export default function HomePageClient({ products, projects, testimonials }: { p
 
       {/* Call to Action Section */}
       <motion.section
-        className="text-center py-20 bg-black"
+        className="text-center py-20 bg-background-secondary"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={sectionVariants}
       >
         <div className="container mx-auto">
-          <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">Ready to start your next project?</h2>
-          <p className="text-lg text-white mb-8">Contact us today for a free consultation and quote.</p>
+          <h2 className="text-2xl md:text-4xl font-bold text-text-primary mb-4">Ready to start your next project?</h2>
+          <p className="text-lg text-text-primary mb-8">Contact us today for a free consultation and quote.</p>
           <Link href="/contact">
-            <button className="bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#3d579f] transition-all duration-300 transform hover:scale-105 cursor-pointer">
+            <button className="bg-primary text-text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#3d579f] transition-all duration-300 transform hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent">
               Get a Quote
             </button>
           </Link>
@@ -172,7 +172,7 @@ export default function HomePageClient({ products, projects, testimonials }: { p
       {/* Testimonials Section */}
       <motion.section
         id="testimonials"
-        className="bg-black py-40"
+        className="bg-background py-40"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -184,9 +184,9 @@ export default function HomePageClient({ products, projects, testimonials }: { p
             <div className="relative flex flex-col justify-center -mt-50 ml-40">
               <div className="absolute -top-16 -left-16 w-40 h-40 border-2 border-[#3d579f] rounded-full opacity-50"></div>
               <div className="absolute -top-8 -left-8 w-32 h-32 bg-[#3d579f] rounded-full flex items-center justify-center">
-                <FaQuoteLeft className="text-white text-5xl" />
+                <FaQuoteLeft className="text-text-primary text-5xl" />
               </div>
-              <h2 className="text-6xl md:text-7xl font-bold font-serif text-white relative z-10 mt-24 ml-16">
+              <h2 className="text-6xl md:text-7xl font-bold font-serif text-text-primary relative z-10 mt-24 ml-16">
                 <span className="block">What Our</span>
                 <span className="block">Clients Say</span>
               </h2>
@@ -211,7 +211,7 @@ export default function HomePageClient({ products, projects, testimonials }: { p
                 {!isBeginning && (
                   <button
                     onClick={handlePrev}
-                    className="w-16 h-16 rounded-full border-2 border-[#3d579f] text-[#3d579f] flex items-center justify-center hover:bg-[#3d579f] hover:text-white transition-colors"
+                    className="w-16 h-16 rounded-full border-2 border-[#3d579f] text-[#3d579f] flex items-center justify-center hover:bg-[#3d579f] hover:text-text-primary transition-colors"
                   >
                     <FaArrowLeft />
                   </button>
@@ -219,7 +219,7 @@ export default function HomePageClient({ products, projects, testimonials }: { p
                 {!isEnd && (
                   <button
                     onClick={handleNext}
-                    className="w-16 h-16 rounded-full border-2 border-[#3d579f] text-[#3d579f] flex items-center justify-center hover:bg-[#3d579f] hover:text-white transition-colors"
+                    className="w-16 h-16 rounded-full border-2 border-[#3d579f] text-[#3d579f] flex items-center justify-center hover:bg-[#3d579f] hover:text-text-primary transition-colors"
                   >
                     <FaArrowRight />
                   </button>

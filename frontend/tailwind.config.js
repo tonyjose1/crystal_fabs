@@ -9,14 +9,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Theme-aware colors
+        background: 'var(--color-background)',
+        'background-secondary': 'var(--color-background-secondary)',
+        'text-primary': 'var(--color-text-primary)',
+        border: 'var(--color-border)',
+
+        // Static brand colors
         primary: '#1E2DB5',
-        primarydark: '#171354',
-        primarydarker: '#000000',
-        secondary: '#2F394D',
+        'primary-dark': '#171354',
         accent: '#4A5EE5',
-        greylight: '#E4E4E4',
-        greydark: '#2F394D',
-        background: '#FFFFFF',
+        'neutral-dark': '#2F394D',
+        'neutral-light': '#E4E4E4',
         white: '#FFFFFF',
         black: '#000000',
       },

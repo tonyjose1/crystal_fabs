@@ -2,7 +2,7 @@ import QuoteForm from '../../components/QuoteForm';
 
 export default function ContactPage() {
   return (
-    <main className="py-20 text-white">
+    <main className="py-20 text-text-primary">
       <div className="container mx-auto px-4">
         <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">Contact Us</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">

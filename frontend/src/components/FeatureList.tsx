@@ -12,11 +12,11 @@ export default function FeatureList({ features }: FeatureListProps) {
       {features.map((feature, index) => (
         <div
           key={index}
-          className="bg-black rounded-lg p-6 text-center transform transition-transform duration-300 hover:scale-105 border-2 border-transparent hover:border-[#3d579f] hover:shadow-lg hover:shadow-[#3d579f]"
+          className="bg-background rounded-lg p-6 text-center transform transition-transform duration-300 hover:scale-105 border-2 border-border hover:border-[#3d579f] hover:shadow-lg hover:shadow-[#3d579f]"
         >
-          <div className="text-white text-4xl mb-4 mx-auto">{feature.icon}</div>
-          <h3 className="text-xl font-bold font-serif text-white">{feature.title}</h3>
-          <p className="text-white mt-2">{feature.description}</p>
+          <div className="text-text-primary text-4xl mb-4 mx-auto">{feature.icon}</div>
+          <h3 className="text-xl font-bold font-serif text-text-primary">{feature.title}</h3>
+          <p className="text-text-primary mt-2">{feature.description}</p>
         </div>
       ))}
     </div>

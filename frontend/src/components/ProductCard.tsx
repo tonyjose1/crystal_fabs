@@ -22,8 +22,8 @@ export default function ProductCard({ product }: ProductCardProps) {
         />
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-bold font-serif mt-2 text-blue">{product.name}</h3>
-        <p className="text-blue mt-2 text-sm">{product.description}</p>
+        <h3 className="text-xl font-bold font-serif mt-2 text-text-primary">{product.name}</h3>
+        <p className="text-text-primary mt-2 text-sm">{product.description}</p>
       </div>
     </div>
   );
