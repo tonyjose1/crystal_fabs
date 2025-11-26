@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import Hero from '../components/Hero';
+import InteractiveBlueprint from '../components/InteractiveBlueprint';
 import ProductCard from '../components/ProductCard';
 import GalleryCard from '../components/GalleryCard';
 import TestimonialCard from '../components/TestimonialCard';
@@ -86,7 +86,7 @@ export default function HomePageClient({ products, projects, testimonials }: { p
 
   return (
     <main>
-      <Hero />
+      <InteractiveBlueprint />
 
       {/* Why Choose Us Section */}
       <motion.section
