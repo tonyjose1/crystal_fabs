@@ -10,6 +10,7 @@ export default function Footer() {
           <div>
             <h3 className="text-2xl font-bold font-serif mb-4 text-text-primary text-center">Crystal Fabs</h3>
             <p className="text-lg text-text-primary">Your trusted partner for custom steel fabrication.</p>
+
           </div>
           <div>
             <h3 className="text-2xl font-bold font-serif mb-4 text-text-primary text-center">Connect With Us</h3>

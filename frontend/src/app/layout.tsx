@@ -22,14 +22,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className="font-sans bg-background text-text-primary">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Cursor />
-          <Header />
-          <main>
-            <PageTransition>{children}</PageTransition>
-          </main>
-          <Footer />
-          <ScrollToTop />
-
+          <div className="flex flex-col min-h-screen">
+            <Cursor />
+            <Header />
+            <main className="flex-grow">
+              <PageTransition>{children}</PageTransition>
+            </main>
+            <Footer />
+            <ScrollToTop />
+          </div>
         </ThemeProvider>
       </body>
     </html>

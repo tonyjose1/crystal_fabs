@@ -42,7 +42,7 @@ export default function WeldingSparkCursor() {
 
     let mouse = { x: -100, y: -100 };
 
-    const sparkColors = ['#ffffffff', '#ffa200ff', '#ff9100ff'];
+    const sparkColors = ['#FFD700', '#FFA500'];
 
     const createBurst = (x: number, y: number) => {
       const burstParticles = 5;

@@ -24,7 +24,7 @@ module.exports = {
         white: '#FFFFFF',
         black: '#000000',
       },
-      boxShadow: {
+            boxShadow: {
         primaryGlow: '0 0 40px rgba(30, 45, 181, 0.8)',
         primaryGlowHover: '0 0 70px rgba(30, 45, 181, 1)',
       },
@@ -45,12 +45,16 @@ module.exports = {
           '0%, 100%': { boxShadow: '0 0 40px rgba(30,45,181,0.7)' },
           '50%': { boxShadow: '0 0 70px rgba(30,45,181,1)' },
         },
+        'stagger-in': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       animation: {
         'fade-in-down': 'fade-in-down 0.5s ease-out',
         'fade-in-up': 'fade-in-up 0.5s ease-out',
         pulseGlow: 'pulseGlow 2.5s ease-in-out infinite',
-
+        'stagger-in': 'stagger-in 0.5s ease-out',
       },
     },
   },

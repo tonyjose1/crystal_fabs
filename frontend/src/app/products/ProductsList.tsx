@@ -58,8 +58,13 @@ export default function ProductsList({ products }: { products: Product[] }) {
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
-        {filteredProducts.map((product) => (
-          <div key={product.id} onClick={() => openModal(product)}>
+        {filteredProducts.map((product, index) => (
+          <div
+            key={product.id}
+            onClick={() => openModal(product)}
+            className="animate-stagger-in"
+            style={{ animationDelay: `${index * 100}ms` }}
+          >
             <ProductCard product={product} />
           </div>
         ))}

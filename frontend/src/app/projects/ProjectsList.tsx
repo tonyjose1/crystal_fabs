@@ -52,8 +52,13 @@ export default function ProjectsList({ projects }: { projects: Project[] }) {
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
-        {filteredProjects.map((project) => (
-          <div key={project.id} onClick={() => openModal(project)}>
+        {filteredProjects.map((project, index) => (
+          <div
+            key={project.id}
+            onClick={() => openModal(project)}
+            className="animate-stagger-in"
+            style={{ animationDelay: `${index * 100}ms` }}
+          >
             <GalleryCard project={project} />
           </div>
         ))}
