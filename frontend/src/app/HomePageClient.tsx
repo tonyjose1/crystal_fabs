@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Hero from '../components/Hero';
+// import InteractiveBlueprint from '../components/InteractiveBlueprint';
 import ProductCard from '../components/ProductCard';
 import GalleryCard from '../components/GalleryCard';
 import TestimonialCard from '../components/TestimonialCard';
@@ -10,9 +11,10 @@ import FeatureList from '../components/FeatureList';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { FaHammer, FaAward, FaLightbulb, FaRulerCombined, FaPeopleCarry, FaCheck, FaQuoteLeft, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { FaHammer, FaAward, FaLightbulb, FaRulerCombined, FaPeopleCarry, FaCheck, FaQuoteLeft, FaArrowLeft, FaArrowRight, FaBroadcastTower, FaCogs, FaDraftingCompass } from 'react-icons/fa';
 import SwiperCore from 'swiper';
 import { useState } from 'react';
+import WeldingSparkCursor from '../components/WeldingSparkCursor';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -85,8 +87,15 @@ export default function HomePageClient({ products, projects, testimonials }: { p
   };
 
   return (
-    <main>
+    <main className="relative">
       <Hero />
+      <WeldingSparkCursor />
+      
+      {/* Service Nodes Container */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-10">
+      </div>
+
+      {/* <InteractiveBlueprint /> */}
 
       {/* Why Choose Us Section */}
       <motion.section
