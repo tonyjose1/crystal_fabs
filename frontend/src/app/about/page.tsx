@@ -1,5 +1,8 @@
+'use client';
+
 import TeamCard from '../../components/TeamCard';
 import Image from 'next/image';
+import InteractiveDotsBackground from '../../components/InteractiveDotsBackground';
 
 export default function AboutPage() {
   const team = [
@@ -15,26 +18,43 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="py-20 text-text-primary">
-      <div className="container mx-auto px-4">
-        <h1 className="text-3xl md:text-4xl font-bold font-serif text-center mb-12">About Crystal Fabs</h1>
-        <p className="text-lg text-center max-w-3xl mx-auto">Crystal Fabs is a leading provider of custom steel fabrication services. We are dedicated to delivering high-quality products and exceptional customer service. Our team of experienced professionals is committed to meeting the unique needs of each client.</p>
+    <main className="relative py-20 text-text-primary">
+      <InteractiveDotsBackground />
+      <div className="container mx-auto px-4 relative z-10 pointer-events-none">
 
-        <section id="our-team" className="py-20">
-          <h2 className="text-2xl md:text-3xl font-bold font-serif text-center mb-12">Our Team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+        {/* Intro Section */}
+        <div className="bg-[var(--color-background-secondary)] p-8 rounded-lg pointer-events-auto mb-12 max-w-4xl mx-auto shadow-sm">
+          <h1 className="text-3xl md:text-4xl font-bold font-serif text-center mb-6">About Crystal Fabs</h1>
+          <p className="text-lg text-center">
+            Crystal Fabs is a leading provider of custom steel fabrication services. We are dedicated to delivering high-quality products and exceptional customer service. Our team of experienced professionals is committed to meeting the unique needs of each client.
+          </p>
+        </div>
+
+        {/* Team Section */}
+        <section id="our-team" className="py-12">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold font-serif inline-block bg-[var(--color-background-secondary)] px-6 py-3 rounded-lg pointer-events-auto shadow-sm">Our Team</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 pointer-events-auto">
             {team.map((member) => (
-              <TeamCard key={member.name} member={member} />
+              <div key={member.name} className="bg-[var(--color-background-secondary)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <TeamCard member={member} />
+              </div>
             ))}
           </div>
         </section>
 
-        <section id="our-office" className="py-20">
-          <h2 className="text-2xl md:text-3xl font-bold font-serif text-center mb-12">Our Office</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+        {/* Office Section */}
+        <section id="our-office" className="py-12">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold font-serif inline-block bg-[var(--color-background-secondary)] px-6 py-3 rounded-lg pointer-events-auto shadow-sm">Our Office</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 pointer-events-auto">
             {officeImages.map((image) => (
-              <div key={image.id} className="relative h-64 rounded-lg overflow-hidden shadow-lg">
-                <Image src={image.src} alt={image.alt} fill style={{ objectFit: 'cover' }} />
+              <div key={image.id} className="bg-[var(--color-background-secondary)] p-2 rounded-lg shadow-md">
+                <div className="relative h-64 rounded-lg overflow-hidden">
+                  <Image src={image.src} alt={image.alt} fill style={{ objectFit: 'cover' }} />
+                </div>
               </div>
             ))}
           </div>

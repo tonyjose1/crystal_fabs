@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import ProjectsList from './ProjectsList';
+import InteractiveDotsBackground from '../../components/InteractiveDotsBackground';
 
 interface Project {
   id: string;
@@ -24,10 +25,15 @@ export default async function ProjectsPage() {
   const projects = await getProjects();
 
   return (
-    <main className="py-20 text-text-primary">
-      <div className="container mx-auto px-4">
-        <h1 className="text-3xl md:text-4xl font-bold font-serif text-center mb-12">Our Projects</h1>
-        <ProjectsList projects={projects} />
+    <main className="relative py-20 text-text-primary">
+      <InteractiveDotsBackground />
+      <div className="container mx-auto px-4 relative z-10 pointer-events-none">
+        <div className="text-center mb-12">
+          <h1 className="text-3xl md:text-4xl font-bold font-serif inline-block bg-[var(--color-background-secondary)] px-8 py-4 rounded-lg pointer-events-auto shadow-sm">Our Projects</h1>
+        </div>
+        <div className="pointer-events-auto">
+          <ProjectsList projects={projects} />
+        </div>
       </div>
     </main>
   );

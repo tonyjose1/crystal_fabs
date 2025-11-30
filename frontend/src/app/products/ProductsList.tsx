@@ -54,7 +54,7 @@ export default function ProductsList({ products }: { products: Product[] }) {
           placeholder="Search products..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="p-3 rounded-md w-full md:w-1/2 bg-background-secondary text-text-primary border border-[#3d579f] placeholder-gray-500 focus:border-[#3d579f] focus:outline-none focus:ring-0"
+          className="p-3 rounded-md w-full md:w-1/2 bg-[var(--color-background-secondary)] text-text-primary border border-[#3d579f] placeholder-gray-500 focus:border-[#3d579f] focus:outline-none focus:ring-0"
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">

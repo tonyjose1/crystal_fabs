@@ -12,7 +12,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="bg-greydark rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl h-full">
+    <div className="bg-[var(--color-background-secondary)] rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl h-full">
       <div className="relative h-48">
         <ImageWithFallback
           src={product.imageUrl || '/placeholder.jpg'}

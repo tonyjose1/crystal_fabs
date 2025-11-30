@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import ProductsList from './ProductsList';
+import InteractiveDotsBackground from '../../components/InteractiveDotsBackground';
 
 interface Category {
   id: string;
@@ -30,10 +31,15 @@ export default async function ProductsPage() {
   const products = await getProducts();
 
   return (
-    <main className="py-20 text-text-primary">
-      <div className="container mx-auto px-4">
-        <h1 className="text-3xl md:text-4xl font-bold font-serif text-center mb-12">Our Products</h1>
-        <ProductsList products={products} />
+    <main className="relative py-20 text-text-primary">
+      <InteractiveDotsBackground />
+      <div className="container mx-auto px-4 relative z-10 pointer-events-none">
+        <div className="text-center mb-12">
+          <h1 className="text-3xl md:text-4xl font-bold font-serif inline-block bg-[var(--color-background-secondary)] px-8 py-4 rounded-lg pointer-events-auto shadow-sm">Our Products</h1>
+        </div>
+        <div className="pointer-events-auto">
+          <ProductsList products={products} />
+        </div>
       </div>
     </main>
   );

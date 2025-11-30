@@ -34,7 +34,7 @@ export default function Modal({ isOpen, onClose, children, title }: ModalProps) 
 
   return (
     <div
-      className={`fixed inset-0 bg-background-secondary bg-opacity-50 z-50 flex justify-center items-center transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
+      className={`fixed inset-0 bg-background-secondary bg-opacity-50 z-50 flex justify-center items-center transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'} pointer-events-auto`}
       onClick={onClose}
     >
       <div

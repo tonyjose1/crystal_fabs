@@ -90,7 +90,7 @@ export default function HomePageClient({ products, projects, testimonials }: { p
     <main className="relative">
       <Hero />
       <WeldingSparkCursor />
-      
+
       {/* Service Nodes Container */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-10">
       </div>
@@ -150,12 +150,12 @@ export default function HomePageClient({ products, projects, testimonials }: { p
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-4xl font-bold font-serif text-center text-text-primary mb-12">Our Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {projects?.map((project) => (
-                <div key={project.id}>
-                  <GalleryCard project={project} />
-                </div>
-              ))}
-            </div>
+            {projects?.map((project) => (
+              <div key={project.id}>
+                <GalleryCard project={project} />
+              </div>
+            ))}
+          </div>
         </div>
       </motion.section>
 
@@ -190,12 +190,15 @@ export default function HomePageClient({ products, projects, testimonials }: { p
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             {/* Left Column */}
-            <div className="relative flex flex-col justify-center -mt-50 ml-40">
-              <div className="absolute -top-16 -left-16 w-40 h-40 border-2 border-[#3d579f] rounded-full opacity-50"></div>
-              <div className="absolute -top-8 -left-8 w-32 h-32 bg-[#3d579f] rounded-full flex items-center justify-center">
+            <div className="relative flex flex-col justify-center -mt-50 md:-mt-50 ml-0 md:ml-40 items-center md:items-start text-center md:text-left">
+              <div className="absolute -top-16 -left-16 w-40 h-40 border-2 border-[#3d579f] rounded-full opacity-50 hidden md:block"></div>
+              <div className="absolute -top-8 -left-8 w-32 h-32 bg-[#3d579f] rounded-full flex items-center justify-center hidden md:flex">
                 <FaQuoteLeft className="text-text-primary text-5xl" />
               </div>
-              <h2 className="text-6xl md:text-7xl font-bold font-serif text-text-primary relative z-10 mt-24 ml-16">
+              <div className="mb-8 md:hidden">
+                <FaQuoteLeft className="text-[#3d579f] text-5xl" />
+              </div>
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold font-serif text-text-primary relative z-10 mt-0 md:mt-24 ml-0 md:ml-16">
                 <span className="block">What Our</span>
                 <span className="block">Clients Say</span>
               </h2>

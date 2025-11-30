@@ -37,11 +37,10 @@ export default function Header() {
     };
   }, [isHomePage]);
 
-  const headerClasses = `sticky top-0 z-50 transition-colors duration-300 rounded-xl ${
-    isHomePage && !isScrolled
+  const headerClasses = `sticky top-0 z-50 transition-colors duration-300 rounded-xl ${isHomePage && !isScrolled
       ? 'bg-transparent text-text-primary'
       : 'backdrop-blur-sm text-text-primary'
-  }`;
+    }`;
 
   return (
     <header className={headerClasses}>
@@ -53,7 +52,7 @@ export default function Header() {
             </motion.div>
           </Link>
           <div className="hidden bg-transparent md:flex items-center space-x-6">
-            
+
             <Link href="/about" className="hover:text-accent">About</Link>
             <Link href="/products" className="hover:text-accent">Products</Link>
             <Link href="/services" className="hover:text-accent">Services</Link>
@@ -87,6 +86,9 @@ export default function Header() {
               <li><Link href="/industries" className="hover:text-accent block" onClick={handleLinkClick}>Industries</Link></li>
               <li><Link href="/projects" className="hover:text-accent block" onClick={handleLinkClick}>Projects</Link></li>
               <li><Link href="/contact" className="hover:text-accent block" onClick={handleLinkClick}>Contact</Link></li>
+              <li className="flex justify-center w-full py-2">
+                <ThemeToggleButton />
+              </li>
               <li className="mt-4">
                 <Link href="/contact" className="bg-primary text-text-primary px-6 py-3 rounded-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-accent" onClick={handleLinkClick}>
                   Get a Free Quote

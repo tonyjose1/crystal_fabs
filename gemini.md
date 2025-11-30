@@ -87,3 +87,5 @@ This file logs the thought process, commands, and actions taken by the Gemini as
 
 - **Outcome:**
   A development process where every feature is analysed before coding, implemented with precision, and documented clearly afterward. No repeated mistakes, no unnecessary rework, and no missing context for future developers.
+
+- never try to communicate using shell command

@@ -20,7 +20,7 @@ import { ThemeProvider } from '../components/ThemeProvider';
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="font-sans bg-background text-text-primary">
+      <body className="font-sans bg-background text-text-primary" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex flex-col min-h-screen">
             <Cursor />

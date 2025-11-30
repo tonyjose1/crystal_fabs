@@ -4,8 +4,8 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-background-secondary text-text-primary text-center py-12 border-t border-border">
-      <div className="container mx-auto px-4">
+    <footer className="bg-background-secondary text-text-primary text-center border-t border-border">
+      <div className="container mx-auto px-4 pt-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-2xl font-bold font-serif mb-4 text-text-primary text-center">Crystal Fabs</h3>
@@ -37,7 +37,7 @@ export default function Footer() {
             <p className="text-lg text-text-primary text-center">+91 9876543210</p>
           </div>
         </div>
-        <div className="border-t border-border mt-8 pt-8 text-center text-text-primary">
+        <div className="border-t border-border mt-8 py-4 text-center text-text-primary">
           <p className="text-lg">&copy; {currentYear} Crystal Fabs. All Rights Reserved. &reg; &trade;</p>
         </div>
       </div>

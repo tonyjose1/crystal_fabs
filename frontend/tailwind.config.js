@@ -12,6 +12,7 @@ module.exports = {
         // Theme-aware colors
         background: 'var(--color-background)',
         'background-secondary': 'var(--color-background-secondary)',
+        'background-dots': 'var(--color-background-dots)',
         'text-primary': 'var(--color-text-primary)',
         border: 'var(--color-border)',
 
@@ -24,7 +25,7 @@ module.exports = {
         white: '#FFFFFF',
         black: '#000000',
       },
-            boxShadow: {
+      boxShadow: {
         primaryGlow: '0 0 40px rgba(30, 45, 181, 0.8)',
         primaryGlowHover: '0 0 70px rgba(30, 45, 181, 1)',
       },
