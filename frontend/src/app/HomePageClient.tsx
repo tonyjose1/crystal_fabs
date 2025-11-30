@@ -11,10 +11,11 @@ import FeatureList from '../components/FeatureList';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { FaHammer, FaAward, FaLightbulb, FaRulerCombined, FaPeopleCarry, FaCheck, FaQuoteLeft, FaArrowLeft, FaArrowRight, FaBroadcastTower, FaCogs, FaDraftingCompass } from 'react-icons/fa';
+import { FaHammer, FaAward, FaLightbulb, FaRulerCombined, FaPeopleCarry, FaCheck, FaQuoteLeft, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import SwiperCore from 'swiper';
 import { useState } from 'react';
 import WeldingSparkCursor from '../components/WeldingSparkCursor';
+import TrustSignals from '../components/TrustSignals';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -95,8 +96,6 @@ export default function HomePageClient({ products, projects, testimonials }: { p
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-10">
       </div>
 
-      {/* <InteractiveBlueprint /> */}
-
       {/* Why Choose Us Section */}
       <motion.section
         id="why-choose-us"
@@ -156,25 +155,6 @@ export default function HomePageClient({ products, projects, testimonials }: { p
               </div>
             ))}
           </div>
-        </div>
-      </motion.section>
-
-      {/* Call to Action Section */}
-      <motion.section
-        className="text-center py-20 bg-background-secondary"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={sectionVariants}
-      >
-        <div className="container mx-auto">
-          <h2 className="text-2xl md:text-4xl font-bold text-text-primary mb-4">Ready to start your next project?</h2>
-          <p className="text-lg text-text-primary mb-8">Contact us today for a free consultation and quote.</p>
-          <Link href="/contact">
-            <button className="bg-primary text-text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#3d579f] transition-all duration-300 transform hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent">
-              Get a Quote
-            </button>
-          </Link>
         </div>
       </motion.section>
 
@@ -239,6 +219,29 @@ export default function HomePageClient({ products, projects, testimonials }: { p
               </div>
             </div>
           </div>
+        </div>
+      </motion.section>
+
+      <div className="relative z-10 pointer-events-auto">
+        <TrustSignals />
+      </div>
+
+      {/* Call to Action Section */}
+      <motion.section
+        className="text-center py-20 bg-background-secondary"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionVariants}
+      >
+        <div className="container mx-auto">
+          <h2 className="text-2xl md:text-4xl font-bold text-text-primary mb-4">Ready to start your next project?</h2>
+          <p className="text-lg text-text-primary mb-8">Contact us today for a free consultation and quote.</p>
+          <Link href="/contact">
+            <button className="bg-primary text-text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#3d579f] transition-all duration-300 transform hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent">
+              Get a Quote
+            </button>
+          </Link>
         </div>
       </motion.section>
     </main>

@@ -26,7 +26,7 @@ export default function InteractiveDotsBackground() {
   const dotColor = resolvedTheme === 'dark' ? '#FFFFFF' : '#000000';
 
   return (
-    <div className="absolute top-0 left-0 w-full h-full z-0 transition-colors duration-300">
+    <div className="absolute top-0 left-0 w-full h-full z-0 transition-colors duration-300 pointer-events-none">
       <InteractiveDots backgroundColor={backgroundColor} dotColor={dotColor} />
     </div>
   );

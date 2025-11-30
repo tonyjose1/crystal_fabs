@@ -7,6 +7,7 @@ import PageTransition from '../components/PageTransition';
 import Link from 'next/link';
 import Cursor from '../components/Cursor';
 import { ThemeProvider } from '../components/ThemeProvider';
+import WhatsAppButton from '../components/WhatsAppButton';
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] });
 const playfairDisplay = Playfair_Display({ subsets: ['latin'], weight: ['700'] });
@@ -84,6 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <PageTransition>{children}</PageTransition>
             </main>
             <Footer />
+            <WhatsAppButton />
             <ScrollToTop />
           </div>
         </ThemeProvider>
