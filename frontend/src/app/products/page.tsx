@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Our Products | Premium Steel Gates, Railings & More',
+  description: 'Browse our catalog of high-quality steel products including custom gates, railings, trusses, and industrial components.',
+};
+
 import fs from 'fs/promises';
 import path from 'path';
 import ProductsList from './ProductsList';

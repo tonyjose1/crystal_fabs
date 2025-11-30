@@ -1,4 +1,11 @@
-'use client';
+
+
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Our Services | Custom Metal Fabrication & Engineering',
+  description: 'Explore our wide range of services including structural engineering, custom gate design, roofing solutions, and precision metal fabrication.',
+};
 
 import React from 'react';
 import Link from 'next/link';

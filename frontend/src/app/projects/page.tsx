@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Our Projects | Portfolio of Custom Steel Works',
+  description: 'View our portfolio of completed projects showcasing our expertise in residential, commercial, and industrial steel fabrication.',
+};
+
 import fs from 'fs/promises';
 import path from 'path';
 import ProjectsList from './ProjectsList';
