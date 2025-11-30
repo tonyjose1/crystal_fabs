@@ -2,6 +2,8 @@
 
 import { Metadata } from 'next';
 
+import { Metadata } from 'next';
+
 export const metadata: Metadata = {
   title: 'Our Services | Custom Metal Fabrication & Engineering',
   description: 'Explore our wide range of services including structural engineering, custom gate design, roofing solutions, and precision metal fabrication.',
@@ -10,6 +12,26 @@ export const metadata: Metadata = {
 import React from 'react';
 import Link from 'next/link';
 import InteractiveDotsBackground from '../../components/InteractiveDotsBackground';
+import FAQ from '../../components/FAQ';
+
+const serviceFAQs = [
+  {
+    question: "What types of industries do you serve?",
+    answer: "We serve a wide range of industries including residential, commercial construction, industrial manufacturing, and architectural design. Our expertise allows us to adapt to the specific needs of each sector."
+  },
+  {
+    question: "Do you offer on-site installation?",
+    answer: "Yes, we provide professional on-site installation services. Our experienced team ensures that all fabricated components are installed safely and correctly, adhering to all relevant building codes and standards."
+  },
+  {
+    question: "Can you handle custom design requests?",
+    answer: "Absolutely. We specialize in custom metal fabrication. Our design and engineering team works closely with clients to turn unique concepts into reality, from initial sketches to final production."
+  },
+  {
+    question: "What is your typical turnaround time?",
+    answer: "Turnaround times vary depending on the project's complexity and scope. For smaller projects, it might be a few weeks, while larger industrial projects can take longer. We provide a detailed timeline during the consultation phase."
+  }
+];
 
 const ServicesPage = () => {
   return (
@@ -46,6 +68,11 @@ const ServicesPage = () => {
               ensuring it meets all necessary codes and standards.</p>
           </div>
         </div>
+
+        <div className="mt-16 pointer-events-auto">
+          <FAQ items={serviceFAQs} title="Common Questions About Our Services" />
+        </div>
+
         <div className="text-center mt-16 bg-[var(--color-background-secondary)] p-4 rounded-lg pointer-events-auto max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to get started?</h2>
           <p className="text-lg mb-8">Contact us today for a free consultation and quote.</p>

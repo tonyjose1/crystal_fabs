@@ -4,6 +4,26 @@ import QuoteWizard from '../../components/QuoteWizard';
 import TrustSignals from '../../components/TrustSignals';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import InteractiveDotsBackground from '../../components/InteractiveDotsBackground';
+import FAQ from '../../components/FAQ';
+
+const contactFAQs = [
+  {
+    question: "How do I request a quote?",
+    answer: "You can request a quote by filling out the form at the top of this page, calling us directly, or sending us an email. We recommend using the form for the fastest response as it gathers all the necessary details."
+  },
+  {
+    question: "What information do you need for a quote?",
+    answer: "To provide an accurate quote, we typically need to know the type of project (residential, commercial, etc.), approximate dimensions, desired materials, and any specific design requirements. Photos or sketches are also very helpful."
+  },
+  {
+    question: "Do you provide free consultations?",
+    answer: "Yes, we offer free initial consultations to discuss your project needs and provide a preliminary estimate. Contact us to schedule an appointment."
+  },
+  {
+    question: "What areas do you service?",
+    answer: "We primarily service Kochi and the surrounding areas in Kerala. However, for larger commercial or industrial projects, we are available to travel throughout the state."
+  }
+];
 
 export default function ContactPage() {
   return (
@@ -68,6 +88,11 @@ export default function ContactPage() {
                 Kerala, India - 682001
               </p>
             </div>
+          </div>
+
+          {/* FAQ Section */}
+          <div className="mb-20 pointer-events-auto">
+            <FAQ items={contactFAQs} title="Frequently Asked Questions" />
           </div>
 
           {/* Trust Signals */}

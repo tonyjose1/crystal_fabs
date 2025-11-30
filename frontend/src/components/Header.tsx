@@ -38,8 +38,8 @@ export default function Header() {
   }, [isHomePage]);
 
   const headerClasses = `sticky top-0 z-50 transition-colors duration-300 rounded-xl ${isHomePage && !isScrolled
-      ? 'bg-transparent text-text-primary'
-      : 'backdrop-blur-sm text-text-primary'
+    ? 'bg-transparent text-text-primary'
+    : 'backdrop-blur-sm text-text-primary'
     }`;
 
   return (
@@ -52,12 +52,12 @@ export default function Header() {
             </motion.div>
           </Link>
           <div className="hidden bg-transparent md:flex items-center space-x-6">
-
             <Link href="/about" className="hover:text-accent">About</Link>
             <Link href="/products" className="hover:text-accent">Products</Link>
             <Link href="/services" className="hover:text-accent">Services</Link>
             <Link href="/industries" className="hover:text-accent">Industries</Link>
             <Link href="/projects" className="hover:text-accent">Projects</Link>
+            <Link href="/blog" className="hover:text-accent">Blog</Link>
             <Link href="/contact" className="hover:text-accent">Contact</Link>
             <ThemeToggleButton />
           </div>
@@ -85,6 +85,7 @@ export default function Header() {
               <li><Link href="/services" className="hover:text-accent block" onClick={handleLinkClick}>Services</Link></li>
               <li><Link href="/industries" className="hover:text-accent block" onClick={handleLinkClick}>Industries</Link></li>
               <li><Link href="/projects" className="hover:text-accent block" onClick={handleLinkClick}>Projects</Link></li>
+              <li><Link href="/blog" className="hover:text-accent block" onClick={handleLinkClick}>Blog</Link></li>
               <li><Link href="/contact" className="hover:text-accent block" onClick={handleLinkClick}>Contact</Link></li>
               <li className="flex justify-center w-full py-2">
                 <ThemeToggleButton />
