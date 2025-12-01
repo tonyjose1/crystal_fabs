@@ -65,8 +65,8 @@ export default function ProjectsList({ projects }: { projects: Project[] }) {
               key={category}
               onClick={() => setSelectedCategory(category)}
               className={`px-6 py-2 rounded-full transition-all duration-300 cursor-pointer ${selectedCategory === category
-                  ? 'bg-[#1E2DB5] text-white shadow-md transform scale-105'
-                  : 'bg-[var(--color-background)] text-[var(--color-text-primary)] border border-gray-200 dark:border-gray-700'
+                ? 'bg-[#1E2DB5] text-white shadow-md transform scale-105'
+                : 'bg-[var(--color-background)] text-[var(--color-text-primary)] border border-gray-200 dark:border-gray-700'
                 }`}
             >
               {category}
@@ -135,7 +135,7 @@ export default function ProjectsList({ projects }: { projects: Project[] }) {
 
               {selectedProject.testimonial && (
                 <div className="mt-6 p-4 bg-[var(--color-background-secondary)] rounded-lg border-l-4 border-primary italic text-gray-600 dark:text-gray-300">
-                  "{selectedProject.testimonial}"
+                  &quot;{selectedProject.testimonial}&quot;
                 </div>
               )}
             </div>
