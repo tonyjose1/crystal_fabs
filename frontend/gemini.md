@@ -111,3 +111,5 @@ This document outlines the thought process, commands, and actions taken by the G
     - Added solid backgrounds to search inputs in Projects and Products pages.
     - Added solid backgrounds to Product Cards to ensure description readability.
 - **Outcome:** A highly polished, consistent, and visually engaging frontend with robust interactive elements.
+
+- **Formspree:** - service for submitting quote forms
